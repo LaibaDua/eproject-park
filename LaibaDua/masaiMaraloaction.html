@@ -1,0 +1,359 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>National Park</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css" />
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+            height: 100vh;
+            background-image: url(imgggs/1920px-Masai_Mara_at_Sunset.jpg);
+            /* Replace with your actual image path */
+            background-size: cover;
+            background-position: center;
+            background-attachment: fixed;
+            font-family: 'Times New Roman', Times, serif;
+        }
+
+        .navbar {
+            background-color: transparent !important;
+            font-size: 18px;
+            padding: 0.5rem 1rem;
+            position: absolute;
+            width: 100%;
+            z-index: 10;
+        }
+
+        .navbar a.nav-link {
+            color: white;
+            font-weight: bold;
+        }
+
+        .navbar a.nav-link:hover {
+            color: beige;
+            text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.5);
+            transition: 0.3s ease-in-out;
+        }
+
+        .navbar-brand {
+            font-size: 2rem;
+            font-weight: bold;
+            color: white !important;
+        }
+
+        .btn-outline {
+            box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.3);
+            border: none;
+            background-color: black;
+            color: white;
+        }
+
+        .btn-outline:hover {
+            background-color: rgb(180, 180, 90);
+            color: rgb(186, 222, 170);
+        }
+
+        .Park-category {
+            padding: 50px 0;
+            text-align: center;
+
+            margin-top: 80px;
+        }
+
+        .Park-category .btn {
+            margin: 35px;
+        }
+
+
+
+        .btn-group .dropdown-item a {
+            text-decoration: none;
+            color: inherit;
+        }
+
+        .btn-group .dropdown-item a:hover {
+            color: inherit;
+            /* Optional: Keeps hover effect consistent */
+        }
+
+        /* Remove blue underline from links, including buttons and "Women" heading */
+        a {
+            text-decoration: none !important;
+            color: inherit;
+            /* Inherit color from parent */
+        }
+
+        .text-box-container {
+            width: 50%;
+            max-width: 500px;
+            background-color: rgba(255, 255, 255, 0.8);
+            border: 1px solid #ddd;
+            border-radius: 15px;
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
+            padding: 20px;
+            text-align: left;
+
+        }
+
+        .text-box-header {
+            font-size: 24px;
+            font-weight: bold;
+            color: #2d6a4f;
+            margin-bottom: 15px;
+            text-align: center;
+        }
+
+        .text-box-content {
+            font-size: 16px;
+            color: #555;
+            line-height: 1.6;
+            overflow-y: auto;
+            max-height: 400px;
+            background: transparent;
+        }
+
+        .map-box {
+            left: 200px;
+            width: 380px;
+            height: 250px;
+            bottom: 500px;
+            transition: 0.3s ease;
+        }
+
+        .map-box :hover {
+            transform: scale(1.02);
+        }
+
+        .site-footer {
+            background-color: #2d6a4f;
+            color: #fff;
+            padding: 40px 0;
+            font-family: Arial, sans-serif;
+        }
+
+        .site-footer h5 {
+            font-size: 18px;
+            font-weight: bold;
+            margin-bottom: 20px;
+        }
+
+        .site-footer p,
+        .site-footer a {
+            color: #ddd;
+            font-size: 14px;
+        }
+
+        .site-footer a:hover {
+            color: #fff;
+            text-decoration: none;
+        }
+
+        .site-footer ul {
+            list-style: none;
+            padding: 0;
+        }
+
+        .site-footer ul li {
+            margin-bottom: 10px;
+        }
+
+        .social-media {
+            text-align: center;
+            margin-top: 20px;
+        }
+
+        .social-icon {
+            color: #fff;
+            font-size: 20px;
+            margin: 0 10px;
+            transition: color 0.3s ease;
+        }
+
+        .social-icon:hover {
+            color: #f1c40f;
+        }
+    </style>
+</head>
+
+<body>
+    <!-- Navbar -->
+    <nav class="navbar navbar-expand-lg">
+        <div class="container-fluid">
+            <a class="navbar-brand" href="homepage.html">National Park</a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarScroll"
+                aria-controls="navbarScroll" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse justify-content-center" id="navbarScroll">
+                <ul class="navbar-nav my-2 my-lg-0 navbar-nav-scroll">
+                    <li class="nav-item"><a class="nav-link" href="homepage.html">Home<i class="fa fa-tree"></i></a></li>
+
+                    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown">Parks</a>
+                        <ul class="dropdown-menu">
+                            <li><a class="dropdown-item" href="">Yellow Stone</a></li>
+                            <li><a class="dropdown-item" href="grandCanyon.html">Grand Canyon National Park</a></li>
+                            <li><a class="dropdown-item" href="">Serengeti National Park</a></li>
+                            <li><a class="dropdown-item" href="">Banff National Park</a></li>
+                            <li><a class="dropdown-item" href="masaiMara.html">Masai Mara National Reserve</a></li>
+                            <li><a class="dropdown-item" href="SanDiego.html">San Diego Zoo Safari Park</a></li>
+                            <li><a class="dropdown-item" href="">Ranthambore National Park</a></li>
+                            <li><a class="dropdown-item" href="">Taronga Zoo</a></li>
+                            <li><a class="dropdown-item" href="">Everglades National Park</a></li>
+                            <li><a class="dropdown-item" href="Singaporezoo.html">Singapore Zoo</a></li>
+                        </ul>
+                    </li>
+
+                    <li class="nav-item"><a class="nav-link" href="">Park Finder <i class="fa fa-paw"></i></a></li>
+                    <li class="nav-item"><a class="nav-link" href="">Interactive Park Map <i class="fa fa-map-marker-alt"></i></a></li>
+
+
+
+                </ul>
+                <form class="d-flex">
+                    <input class="form-control me-2" type="search" placeholder="Search">
+                    <button class="btn btn-outline" type="submit">Search</button>
+                </form>
+                <span class="ms-3">
+                    <a href="form.html"><i class="fa-solid fa-user"></i></a>
+                </span>
+               
+            </div>
+        </div>
+    </nav>
+    <br>
+    <br>
+    <br>
+
+
+
+
+    <div class="Park-category">
+        <h2 style=" color: white;"><b><a href="">Maasai Mara National Reserve</a></b></h2>
+        <div class="d-flex justify-content-center mb-4">
+            <button class="btn btn-dark"><a href="masaiMara.html">Overview</a></button>
+            <button class="btn btn-dark"><a href="masaiMaraiAnim.html">Animals</a></button>
+            <button class="btn btn-dark"><a href="masaiMaraloaction.html">Location</a></button>
+        </div>
+    </div>
+
+
+
+
+
+
+    <center>
+        <div class="text-box-container">
+            <div class="text-box-header"></div>
+            <div class="text-box-content">
+
+                <p>
+                    <strong>Location</strong>
+                    <br>
+                    C13 Lolgorien, Maasai Mara National Reserve, Rift Valley
+                    <br>
+                    <br>
+                    <strong>Timings</strong><br>
+                    The Maasai Mara National Reserve in Kenya operates daily from 6:00 AM to 6:00 PM.
+                    <br>
+                    <br><strong>Contact</strong>
+                    <br>
+                    +254 20 600800
+                </p>
+
+            </div>
+        </div>
+
+        <br>
+        <br>
+        <br>
+
+        <div class="text-box-container">
+            <div class="text-box-header">Map</div>
+            <div class="text-box-content">
+                <center>
+                    <div class="map-box">
+                        <iframe
+                            src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3988.4834851649825!2d35.12741467359074!3d-1.4821323985039456!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x182ce8a64a31fdb1%3A0x296a9587e0c3c410!2sMaasai%20Mara%20National%20Reserve!5e0!3m2!1sen!2s!4v1735313345973!5m2!1sen!2s"
+                            width="380" height="230" style="border:0;" allowfullscreen="" loading="lazy"
+                            referrerpolicy="no-referrer-when-downgrade"></iframe>
+                    </div>
+                </center>
+
+            </div>
+        </div>
+    </center>
+
+    <br>
+    <br>
+    <br>
+    <br>
+
+
+
+
+    <footer class="site-footer">
+        <div class="container">
+            <div class="row">
+                <!-- About Section -->
+                <div class="col-md-4">
+                    <h5>About Us</h5>
+                    <p>We are dedicated to bringing the wonders of national parks and wildlife to your fingertips. Our
+                        mission is to help you explore the beauty of nature and the incredible animals that inhabit
+                        these pristine environments.</p>
+                </div>
+
+                <!-- Quick Links Section -->
+                <div class="col-md-4">
+                    <h5>Quick Links</h5>
+                    <ul>
+                        <li><a href="#">Home</a></li>
+                        <li><a href="#">National Parks</a></li>
+                        <li><a href="#">Wildlife Information</a></li>
+                        <li><a href="#">Our Mission</a></li>
+                        <li><a href="#">Contact Us</a></li>
+                    </ul>
+                </div>
+
+                <!-- Contact Section -->
+                <div class="col-md-4">
+                    <h5>Contact Us</h5>
+                    <p>Email: support@nationalparks.com</p>
+                    <p>Phone: +1 (800) 123-4567</p>
+                    <p>Address: 123 Wilderness Ave, Nature City, NC 56789</p>
+                </div>
+            </div>
+
+            <div class="row">
+                <!-- Social Media Section -->
+                <div class="col-12">
+                    <div class="social-media">
+                        <a href="#" class="social-icon"><i class="fab fa-facebook-f"></i></a>
+                        <a href="#" class="social-icon"><i class="fab fa-twitter"></i></a>
+                        <a href="#" class="social-icon"><i class="fab fa-instagram"></i></a>
+                        <a href="#" class="social-icon"><i class="fab fa-youtube"></i></a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+
+
+
+
+
+</body>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"
+    integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz"
+    crossorigin="anonymous"></script>
+<script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
+
+</html>

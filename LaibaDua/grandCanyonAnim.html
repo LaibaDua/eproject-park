@@ -1,0 +1,530 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>National Park</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css" />
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+            height: 100vh;
+            background-image: url(imgggs/gc.jpg);
+            /* Replace with your actual image path */
+            background-size: cover;
+            background-position: center;
+            background-attachment: fixed;
+            font-family: 'Times New Roman', Times, serif;
+        }
+
+        .navbar {
+            background-color: transparent !important;
+            font-size: 18px;
+            padding: 0.5rem 1rem;
+            position: absolute;
+            width: 100%;
+            z-index: 10;
+        }
+
+        .navbar a.nav-link {
+            color: white;
+            font-weight: bold;
+        }
+
+        .navbar a.nav-link:hover {
+            color: beige;
+            text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.5);
+            transition: 0.3s ease-in-out;
+        }
+
+        .navbar-brand {
+            font-size: 2rem;
+            font-weight: bold;
+            color: white !important;
+        }
+
+        .btn-outline {
+            box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.3);
+            border: none;
+            background-color: black;
+            color: white;
+        }
+
+        .btn-outline:hover {
+            background-color: rgb(180, 180, 90);
+            color: rgb(186, 222, 170);
+        }
+
+        .Park-category {
+            padding: 50px 0;
+            text-align: center;
+
+            margin-top: 80px;
+        }
+
+        .Park-category .btn {
+            margin: 35px;
+        }
+
+
+
+        .btn-group .dropdown-item a {
+            text-decoration: none;
+            color: inherit;
+        }
+
+        .btn-group .dropdown-item a:hover {
+            color: inherit;
+            /* Optional: Keeps hover effect consistent */
+        }
+
+        /* Remove blue underline from links, including buttons and "Women" heading */
+        a {
+            text-decoration: none !important;
+            color: inherit;
+            /* Inherit color from parent */
+        }
+
+        .text-box-container {
+            width: 50%;
+            max-width: 500px;
+            background-color: rgba(255, 255, 255, 0.8);
+            border: 1px solid #ddd;
+            border-radius: 15px;
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
+            padding: 20px;
+            text-align: left;
+
+        }
+
+        .text-box-header {
+            font-size: 24px;
+            font-weight: bold;
+            color: #2d6a4f;
+            margin-bottom: 15px;
+            text-align: center;
+        }
+
+        .text-box-content {
+            font-size: 16px;
+            color: #555;
+            line-height: 1.6;
+            overflow-y: auto;
+            max-height: 400px;
+            background: transparent;
+        }
+
+        .swiper {
+            width: 100%;
+            height: auto;
+        }
+
+        .swiper-slide {
+            position: relative;
+            overflow: hidden;
+            border-radius: 5px;
+        }
+
+        .swiper-slide img {
+            display: block;
+            width: 70%;
+            /* Ensure the image scales proportionally */
+            height: auto;
+            /* Maintain the aspect ratio */
+            z-index: 1;
+        }
+
+        .hover-text {
+            background-color: rgba(45, 106, 79, 0.9);
+            color: white;
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 70%;
+            /* Match the slide width */
+            text-align: center;
+            padding: 10px;
+            box-sizing: border-box;
+            transform: translateY(100%);
+            transition: transform 0.3s ease-in-out;
+            z-index: 2;
+            font-size: 14px;
+        }
+
+        .swiper-slide:hover .hover-text {
+            transform: translateY(0);
+        }
+
+        /* Responsive adjustments */
+        @media (max-width: 768px) {
+            .swiper {
+                width: 100%;
+                /* Full width on smaller devices */
+            }
+
+            .hover-text {
+                font-size: 3px;
+                /* Adjust text size for readability */
+                padding: 8px;
+            }
+        }
+        .site-footer {
+            background-color: #2d6a4f;
+            color: #fff;
+            padding: 40px 0;
+            font-family: Arial, sans-serif;
+        }
+
+        .site-footer h5 {
+            font-size: 18px;
+            font-weight: bold;
+            margin-bottom: 20px;
+        }
+
+        .site-footer p,
+        .site-footer a {
+            color: #ddd;
+            font-size: 14px;
+        }
+
+        .site-footer a:hover {
+            color: #fff;
+            text-decoration: none;
+        }
+
+        .site-footer ul {
+            list-style: none;
+            padding: 0;
+        }
+
+        .site-footer ul li {
+            margin-bottom: 10px;
+        }
+
+        .social-media {
+            text-align: center;
+            margin-top: 20px;
+        }
+
+        .social-icon {
+            color: #fff;
+            font-size: 20px;
+            margin: 0 10px;
+            transition: color 0.3s ease;
+        }
+
+        .social-icon:hover {
+            color: #f1c40f;
+        }
+    </style>
+</head>
+
+<body>
+    <!-- Navbar -->
+    <nav class="navbar navbar-expand-lg">
+        <div class="container-fluid">
+            <a class="navbar-brand" href="homepage.html">National Park</a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarScroll"
+                aria-controls="navbarScroll" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse justify-content-center" id="navbarScroll">
+                <ul class="navbar-nav my-2 my-lg-0 navbar-nav-scroll">
+                    <li class="nav-item"><a class="nav-link" href="homepage.html">Home<i class="fa fa-tree"></i></a>
+                    </li>
+
+                    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown">Parks</a>
+                        <ul class="dropdown-menu">
+                            <li><a class="dropdown-item" href="">Yellow Stone</a></li>
+                            <li><a class="dropdown-item" href="grandCanyon.html">Grand Canyon National Park</a></li>
+                            <li><a class="dropdown-item" href="">Serengeti National Park</a></li>
+                            <li><a class="dropdown-item" href="">Banff National Park</a></li>
+                            <li><a class="dropdown-item" href="masaiMara.html">Masai Mara National Reserve</a></li>
+                            <li><a class="dropdown-item" href="SanDiego.html">San Diego Zoo Safari Park</a></li>
+                            <li><a class="dropdown-item" href="">Ranthambore National Park</a></li>
+                            <li><a class="dropdown-item" href="">Taronga Zoo</a></li>
+                            <li><a class="dropdown-item" href="">Everglades National Park</a></li>
+                            <li><a class="dropdown-item" href="Singaporezoo.html">Singapore Zoo</a></li>
+                        </ul>
+                    </li>
+
+                    <li class="nav-item"><a class="nav-link" href="">Park Finder <i class="fa fa-paw"></i></a></li>
+                    <li class="nav-item"><a class="nav-link" href="">Interactive Park Map <i
+                                class="fa fa-map-marker-alt"></i></a></li>
+
+
+
+                </ul>
+                <form class="d-flex">
+                    <input class="form-control me-2" type="search" placeholder="Search">
+                    <button class="btn btn-outline" type="submit">Search</button>
+                </form>
+                <span class="ms-3">
+                    <a href="form.html"><i class="fa-solid fa-user"></i></a>
+                </span>
+
+            </div>
+        </div>
+    </nav>
+    <br>
+    <br>
+    <br>
+
+
+
+
+    <div class="Park-category">
+        <h2 style=" color: white;"><b><a href="">Grand Canyon National</a></b></h2>
+        <div class="d-flex justify-content-center mb-4">
+            <button class="btn btn-dark"><a href="grandCanyon.html">Overview</a></button>
+            <button class="btn btn-dark"><a href="grandCanyonAnim.html">Animals</a></button>
+            <button class="btn btn-dark"><a href="grandCanyonlocation.html">Location</a></button>
+        </div>
+    </div>
+
+
+
+
+
+    <center>
+        <div class="text-box-container">
+            <div class="text-box-header">Mammals</div>
+        </div>
+    </center>
+
+    <div class="row mx-0 px-0 my-5" style="justify-content: center;">
+        <div class="col-md-10">
+
+            <!-- Slider main container -->
+
+            <div class="swiper">
+                <!-- Additional required wrapper -->
+                <div class="swiper-wrapper">
+                    <!-- Slides -->
+                    <div class="swiper-slide"><img src="imgggs/MOUNTAIN LIONS.jpg" height="200px" width="300px"
+                            alt=""><span class="hover-text"><strong>MOUNTAIN LIONS:</strong> Mountain lions, also known
+                            as cougars or pumas, are large, solitary wild cats native to the Americas. They are agile
+                            predators, known for their ability to leap great distances.</span></div>
+                    <div class="swiper-slide"><img src="imgggs/Coyotes.jpg" height="200px" width="300px" alt=""><span
+                            class="hover-text"><strong>COYOTES:</strong> Coyotes are highly adaptable, medium-sized
+                            canids found across North America, known for their intelligence and resourcefulness. They
+                            are omnivores, thriving in various habitats.</span></div>
+                    <div class="swiper-slide"><img src="imgggs/BOBCATS.jpg" height="200px" width="300px" alt=""><span
+                            class="hover-text"><strong>BOBCATS:</strong> Bobcats are elusive, medium-sized wild cats
+                            native to North America, recognizable by their tufted ears and short, bobbed tails. They are
+                            skilled hunters, preying on small animals.</span></div>
+                    <div class="swiper-slide"><img src="imgggs/ELK.jpg" height="200px" width="300px" alt=""><span
+                            class="hover-text"><strong>ELK:</strong> Elk are large, majestic members of the deer family,
+                            found in forests and grasslands of North America and parts of Asia. Known for their
+                            impressive antlers and bugling calls.</span></div>
+                    <div class="swiper-slide"><img src="imgggs/MULL DEER.jpg" height="200px" width="300px" alt=""><span
+                            class="hover-text"><strong>MULL DEER:</strong> Mule deer are graceful deer species native to
+                            western North America, easily identified by their large, mule-like ears.</span></div>
+
+
+                </div>
+
+
+            </div>
+        </div>
+    </div>
+
+
+
+
+
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+
+
+
+
+
+    <center>
+        <div class="text-box-container">
+            <div class="text-box-header">Birds</div>
+        </div>
+    </center>
+
+    <div class="row mx-0 px-0 my-5" style="justify-content: center;">
+        <div class="col-md-10">
+
+            <!-- Slider main container -->
+
+            <div class="swiper">
+                <!-- Additional required wrapper -->
+                <div class="swiper-wrapper">
+                    <!-- Slides -->
+                    <div class="swiper-slide"><img src="imgggs/Peregrine Falcons.jpg" height="200px" width="300px"
+                            alt=""><span class="hover-text"><strong>PEREGRINE FALCONS:</strong> Peregrine falcons are
+                            powerful birds of prey known for being the fastest animals on Earth, reaching speeds of over
+                            240 mph during their stoops.</span></div>
+                    <div class="swiper-slide"><img src="imgggs/California Condors.jpg" height="200px" width="300px"
+                            alt=""><span class="hover-text"><strong>CALIFORNIA CONDORS:</strong> California condors are
+                            critically endangered vultures, known for their impressive 10-foot wingspan, making them one
+                            of the largest flying birds in North America.</span></div>
+                    <div class="swiper-slide"><img src="imgggs/Ravens.jpg" height="200px" width="300px" alt=""><span
+                            class="hover-text"><strong>RAVENS:</strong> Ravens are intelligent and adaptable birds,
+                            known for their glossy black feathers and complex vocalizations. Found worldwide, they are
+                            problem-solvers and often associated with myths and folklore due to their mysterious
+                            nature.</span></div>
+                    <div class="swiper-slide"><img src="imgggs/Western Bluebirds.jpg" height="200px" width="300px"
+                            alt=""><span class="hover-text"><strong>WESTERN BLUEBIRDS:</strong> Western bluebirds are
+                            small, brightly colored songbirds with vivid blue feathers and rusty-orange chests. Found in
+                            open woodlands and grasslands, they are insectivorous and often nest in tree cavities or
+                            birdhouses.</span>
+                    </div>
+                    <div class="swiper-slide"><img src="imgggs/Turkey Vultures.jpg" height="200px" width="300px"
+                            alt=""><span class="hover-text"><strong>TURKEY VULTURES:</strong> Turkey vultures are large,
+                            scavenging birds recognized by their red heads and broad, dark wings with silvery
+                            undersides.</span></div>
+
+                </div>
+
+            </div>
+        </div>
+    </div>
+
+
+
+    <br>
+    <br>
+    <br>
+    <br>
+
+
+
+
+    <center>
+        <div class="text-box-container">
+            <div class="text-box-header">Reptiles</div>
+        </div>
+    </center>
+
+    <div class="row mx-0 px-0 my-5" style="justify-content: center;">
+        <div class="col-md-10">
+
+            <!-- Slider main container -->
+
+            <div class="swiper">
+                <!-- Additional required wrapper -->
+                <div class="swiper-wrapper">
+                    <!-- Slides -->
+                    <div class="swiper-slide"><img src="imgggs/gila monster.jpg" height="200px" width="300px"
+                            alt=""><span class="hover-text"><strong>GILA MONSTER:</strong> The Gila monster is a
+                            venomous, brightly colored lizard native to the deserts of the southwestern United States
+                            and Mexico. Known for its slow movement and distinct orange or pink patterns.</span></div>
+                    <div class="swiper-slide"><img src="imgggs/gophersnake.jpg" height="200px" width="300px"
+                            alt=""><span class="hover-text"><strong>GOPHER SNAKE:</strong> Gopher snakes are
+                            non-venomous, ground-dwelling snakes found in North America, known for their defensive
+                            hissing when threatened.</span></div>
+                    <div class="swiper-slide"><img src="imgggs/short-horned-lizard.jpg" height="200px" width="300px"
+                            alt=""><span class="hover-text"><strong>SHORT-HORNED LIZARD:</strong> Short-horned lizards,
+                            also known as horny toads, are small, stout reptiles with spiny bodies and short horns on
+                            their heads. Native to North America, they are well-adapted to desert environments.</span></div>
+                    <div class="swiper-slide"><img src="imgggs/RATTLESNAKE.jpg" height="200px" width="300px"
+                            alt=""><span class="hover-text"><strong>RATTLE SNAKE:</strong> Rattlesnakes are venomous
+                            snakes, easily recognized by the rattle at the end of their tails, which they use as a
+                            warning sound. Found across the Americas, they are skilled hunters.</span>
+                    </div>
+                    <div class="swiper-slide"><img src="imgggs/YELLOW BACK-LIZARD.jpg" height="200px" width="300px"
+                            alt=""><span class="hover-text"><strong>YELLOW-BACKED SPINY LIZARD:</strong> The
+                            yellow-backed spiny lizard is a colorful reptile native to the southwestern United States,
+                            known for its striking yellow and blue patterns on its back.</span></div>
+
+                </div>
+
+
+            </div>
+        </div>
+    </div>
+
+
+
+    <br>
+    <br>
+    <br>
+    <br>
+
+
+    <footer class="site-footer">
+        <div class="container">
+            <div class="row">
+                <!-- About Section -->
+                <div class="col-md-4">
+                    <h5>About Us</h5>
+                    <p>We are dedicated to bringing the wonders of national parks and wildlife to your fingertips. Our
+                        mission is to help you explore the beauty of nature and the incredible animals that inhabit
+                        these pristine environments.</p>
+                </div>
+
+                <!-- Quick Links Section -->
+                <div class="col-md-4">
+                    <h5>Quick Links</h5>
+                    <ul>
+                        <li><a href="#">Home</a></li>
+                        <li><a href="#">National Parks</a></li>
+                        <li><a href="#">Wildlife Information</a></li>
+                        <li><a href="#">Our Mission</a></li>
+                        <li><a href="#">Contact Us</a></li>
+                    </ul>
+                </div>
+
+                <!-- Contact Section -->
+                <div class="col-md-4">
+                    <h5>Contact Us</h5>
+                    <p>Email: support@nationalparks.com</p>
+                    <p>Phone: +1 (800) 123-4567</p>
+                    <p>Address: 123 Wilderness Ave, Nature City, NC 56789</p>
+                </div>
+            </div>
+
+            <div class="row">
+                <!-- Social Media Section -->
+                <div class="col-12">
+                    <div class="social-media">
+                        <a href="#" class="social-icon"><i class="fab fa-facebook-f"></i></a>
+                        <a href="#" class="social-icon"><i class="fab fa-twitter"></i></a>
+                        <a href="#" class="social-icon"><i class="fab fa-instagram"></i></a>
+                        <a href="#" class="social-icon"><i class="fab fa-youtube"></i></a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+
+
+
+</body>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"
+    integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz"
+    crossorigin="anonymous"></script>
+<script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
+
+<script>
+    const swiper = new Swiper('.swiper', {
+        // Optional parameters
+        direction: 'horizontal',
+        loop: true,
+        slidesPerView: 3,
+        spaceBetween: 20,
+        autoplay: {
+            delay: 5000,
+        },
+
+        effect: 'slide',
+
+    });
+</script>
+
+</html>

@@ -1,0 +1,632 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>National Park</title>
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css" />
+  <style>
+    body {
+      margin: 0;
+      padding: 0;
+      height: 100vh;
+      background-image: url(imgggs/1920px-Masai_Mara_at_Sunset.jpg);
+      /* Replace with your actual image path */
+      background-size: cover;
+      background-position: center;
+      background-attachment: fixed;
+      font-family: 'Times New Roman', Times, serif;
+    }
+
+    .navbar {
+      background-color: transparent !important;
+      font-size: 18px;
+      padding: 0.5rem 1rem;
+      position: absolute;
+      width: 100%;
+      z-index: 10;
+    }
+
+    .navbar a.nav-link {
+      color: white;
+      font-weight: bold;
+    }
+
+    .navbar a.nav-link:hover {
+      color: beige;
+      text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.5);
+      transition: 0.3s ease-in-out;
+    }
+
+    .navbar-brand {
+      font-size: 2rem;
+      font-weight: bold;
+      color: white !important;
+    }
+
+    .btn-outline {
+      box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.3);
+      border: none;
+      background-color: black;
+      color: white;
+    }
+
+    .btn-outline:hover {
+      background-color: rgb(180, 180, 90);
+      color: rgb(186, 222, 170);
+    }
+
+    .Park-category {
+      padding: 50px 0;
+      padding-bottom: 0;
+      text-align: center;
+
+      margin-top: 80px;
+    }
+
+    .Park-category .btn {
+      margin: 35px;
+    }
+
+    .card {
+      width: 18rem;
+      margin: 10px auto;
+      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    }
+
+    .card img {
+      height: 200px;
+      object-fit: cover;
+    }
+
+    .category-cards {
+      display: flex;
+      justify-content: center;
+      flex-wrap: wrap;
+      gap: 20px;
+    }
+
+    @media (max-width: 768px) {
+      .category-cards {
+        flex-direction: column;
+        align-items: center;
+      }
+    }
+
+    .btn-group .dropdown-item a {
+      text-decoration: none;
+      color: inherit;
+    }
+
+    .btn-group .dropdown-item a:hover {
+      color: inherit;
+      /* Optional: Keeps hover effect consistent */
+    }
+
+    /* Remove blue underline from links, including buttons and "Women" heading */
+    a {
+      text-decoration: none !important;
+      color: inherit;
+      /* Inherit color from parent */
+    }
+
+
+
+    .page-wrapper {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      min-height: 100vh;
+      /* Ensures the content is vertically centered */
+      background-color: #f9f9f9;
+      /* Background color for the page */
+    }
+
+    .text-box-container {
+      width: 80%;
+      max-width: 800px;
+      background-color: rgba(255, 255, 255, 0.8);
+      border: 1px solid #ddd;
+      border-radius: 15px;
+      box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
+      padding: 20px;
+      text-align: left;
+
+    }
+
+    .text-box-header {
+      font-size: 24px;
+      font-weight: bold;
+      color: #2d6a4f;
+      margin-bottom: 15px;
+      text-align: center;
+    }
+
+    .text-box-content {
+      font-size: 16px;
+      color: #555;
+      line-height: 1.6;
+      overflow-y: auto;
+      max-height: 400px;
+      background: transparent;
+    }
+
+    .text-box-content::-webkit-scrollbar {
+      width: 8px;
+    }
+
+    .text-box-content::-webkit-scrollbar-thumb {
+      background: #aaa;
+      border-radius: 10px;
+    }
+
+    .text-box-content::-webkit-scrollbar-track {
+      background: #f1f1f1;
+    }
+
+    .image-row {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      /* Centers the images horizontally */
+      align-items: center;
+      /* Aligns the images vertically */
+      gap: 20px;
+      /* Adds spacing between the images */
+      margin: 20px 0;
+      /* Adds some vertical margin */
+    }
+
+    .image-item img {
+      width: 300px;
+      /* Set desired width */
+      height: 200px;
+      /* Set desired height */
+      object-fit: cover;
+      /* Ensures the image fits without distortion */
+      border-radius: 10px;
+      /* Optional: Rounded corners for images */
+      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+      /* Optional: Adds a shadow */
+    }
+
+
+    .site-footer {
+      background-color: #2d6a4f;
+      color: #fff;
+      padding: 40px 0;
+      font-family: Arial, sans-serif;
+    }
+
+    .site-footer h5 {
+      font-size: 18px;
+      font-weight: bold;
+      margin-bottom: 20px;
+    }
+
+    .site-footer p,
+    .site-footer a {
+      color: #ddd;
+      font-size: 14px;
+    }
+
+    .site-footer a:hover {
+      color: #fff;
+      text-decoration: none;
+    }
+
+    .site-footer ul {
+      list-style: none;
+      padding: 0;
+    }
+
+    .site-footer ul li {
+      margin-bottom: 10px;
+    }
+
+    .social-media {
+      text-align: center;
+      margin-top: 20px;
+    }
+
+    .social-icon {
+      color: #fff;
+      font-size: 20px;
+      margin: 0 10px;
+      transition: color 0.3s ease;
+    }
+
+    .social-icon:hover {
+      color: #f1c40f;
+    }
+  </style>
+</head>
+
+<body>
+  <!-- Navbar -->
+  <nav class="navbar navbar-expand-lg">
+    <div class="container-fluid">
+      <a class="navbar-brand" href="homepage.html">National Park</a>
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarScroll"
+        aria-controls="navbarScroll" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse justify-content-center" id="navbarScroll">
+        <ul class="navbar-nav my-2 my-lg-0 navbar-nav-scroll">
+          <li class="nav-item"><a class="nav-link" href="homepage.html">Home<i class="fa fa-tree"></i></a></li>
+
+          <li class="nav-item dropdown">
+            <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown">Parks</a>
+            <ul class="dropdown-menu">
+              <li><a class="dropdown-item" href="">Yellow Stone</a></li>
+              <li><a class="dropdown-item" href="grandCanyon.html">Grand Canyon National Park</a></li>
+              <li><a class="dropdown-item" href="">Serengeti National Park</a></li>
+              <li><a class="dropdown-item" href="">Banff National Park</a></li>
+              <li><a class="dropdown-item" href="masaiMara.html">Masai Mara National Reserve</a></li>
+              <li><a class="dropdown-item" href="SanDiego.html">San Diego Zoo Safari Park</a></li>
+              <li><a class="dropdown-item" href="">Ranthambore National Park</a></li>
+              <li><a class="dropdown-item" href="">Taronga Zoo</a></li>
+              <li><a class="dropdown-item" href="">Everglades National Park</a></li>
+              <li><a class="dropdown-item" href="Singaporezoo.html">Singapore Zoo</a></li>
+            </ul>
+          </li>
+
+          <li class="nav-item"><a class="nav-link" href="">Park Finder<i class="fa fa-paw"></i></a></li>
+          <li class="nav-item"><a class="nav-link" href="">Interactive Park Map<i class="fa fa-map-marker-alt"></i></a></li>
+
+
+
+        </ul>
+        <form class="d-flex">
+          <input class="form-control me-2" type="search" placeholder="Search">
+          <button class="btn btn-outline" type="submit">Search</button>
+        </form>
+        <span class="ms-3">
+          <a href="form.html"><i class="fa-solid fa-user"></i></a>
+        </span>
+        
+      </div>
+    </div>
+  </nav>
+  <br>
+  <br>
+  <br>
+
+
+
+
+
+
+
+
+
+  <div class="Park-category">
+    <h2 style=" color: white;"><b><a href="">Maasai Mara National Reserve</a></b></h2>
+    <div class="d-flex justify-content-center mb-4">
+      <button class="btn btn-dark"><a href="masaiMara.html">Overview</a></button>
+      <button class="btn btn-dark"><a href="masaiMaraiAnim.html">Animals</a></button>
+      <button class="btn btn-dark"><a href="masaiMaraloaction.html">Location</a></button>
+    </div>
+
+    <center>
+      <div class="text-box-container">
+        <div class="text-box-header">Maasai Mara National Reserve Information</div>
+        <div class="text-box-content">
+          <p>
+            <strong>Welcome to Maasai Mara National Reserve </strong><br>
+            Immerse yourself in the breathtaking beauty of Maasai Mara, a world-renowned wildlife haven in Kenya. Famous
+            for the Great Migration, where millions of wildebeests and zebras traverse its golden plains, the reserve
+            offers unparalleled opportunities to witness the "Big Five" in their natural habitat. From majestic lions to
+            elegant giraffes, Maasai Mara showcases Africa's rich biodiversity. Whether you're exploring its vast
+            landscapes or experiencing its vibrant Maasai culture, every moment promises to be unforgettable. Welcome to
+            a land of adventure, wonder, and timeless beauty!
+          </p>
+          <p>
+            <strong>A Glimpse into History</strong><br>
+            The Maasai Mara National Reserve, named after the Maasai people and the Mara River, is a cornerstone of
+            Kenya's cultural and natural heritage. Established in 1961 as a wildlife sanctuary, it reflects the
+            harmonious coexistence of the Maasai with the land's rich biodiversity. The reserve preserves majestic
+            landscapes and diverse ecosystems for generations to come.
+          </p>
+          <p>
+            <strong>What Makes Maasai Mara National Reserve Special</strong><br>
+            <!-- Yellowstone boasts an array of attractions that captivate millions of visitors each year: -->
+          <ul>
+            <li><strong>Rich Maasai Culture:</strong>The Maasai people, known for their vibrant traditions and
+              harmonious relationship with nature, bring a
+              cultural depth to the reserve. Their stories, dances, and crafts add a unique human connection to the wild
+              experience </li>
+            <li><strong>Abundant Wildlife:</strong> The Maasai Mara is renowned for its incredible biodiversity, hosting
+              the iconic "Big Five" (lion, leopard,
+              elephant, buffalo, and rhino) and over 450 bird species. Its vast savannahs teem with life, offering
+              unmatched
+              opportunities to witness nature up close.</li>
+            <li><strong>Scenic Landscapes:</strong>The reserve’s rolling plains, dotted with acacia trees and dramatic
+              riverbanks, create a picture-perfect
+              backdrop for safaris and exploration. The golden sunsets and starry nights add to its mesmerizing allure.
+            </li>
+            <li><strong>The Great Migration:</strong>Every year, millions of wildebeests, zebras, and gazelles embark on
+              the Great Migration, crossing the Mara
+              River in a breathtaking spectacle of survival and resilience. This natural phenomenon draws visitors from
+              all
+              over the globe. </li>
+          </ul>
+
+
+          </p>
+        </div>
+      </div>
+      <br>
+      <br>
+      <br>
+      <div class="text-box-container">
+        <div class="text-box-header">Maasai Mara National Reserve Facilities</div>
+        <div class="text-box-content">
+
+          <p>
+            <strong>Facilities</strong><br>
+            Maasai Mara National Reserve offers a variety of facilities to enhance visitor experiences, including
+            Accommodation,
+            Guided Safari Tours, Safety and Support, Visitor Centers, and Airstrips and Transportation.
+
+            <br>
+            <br><strong>Accommodations</strong> The reserve offers a range of accommodations, from luxurious lodges with
+            modern amenities to eco-friendly tented camps that immerse you in nature.
+          </p>
+
+
+        </div>
+      </div>
+      <br>
+      <br>
+      <br>
+
+      <div class="text-box-container">
+        <div class="text-box-header"></div>
+        <div class="text-box-content">
+
+          <p>
+            <strong><b>1.</b>Angama Mara</strong><br>
+            Angama Mara sits on the edge of the Oloololo Escarpment, offering one of the most stunning vantage points in
+            the Maasai Mara.
+          </p>
+
+
+        </div>
+      </div>
+
+
+
+
+
+      <div class="image-row">
+        <div class="image-item">
+          <img src="imgggs/m.jpg" alt="Image 1">
+        </div>
+        <div class="image-item">
+          <img src="imgggs/mm.jpg" alt="Image 2">
+        </div>
+        <div class="image-item">
+          <img src="imgggs/mmm.jpg" alt="Image 3">
+        </div>
+      </div>
+
+      <div class="text-box-container">
+        <div class="text-box-header"></div>
+        <div class="text-box-content">
+
+          <p>
+            <strong>Exterior:</strong><br>
+            Angama Mara's exterior features glass-walled suites and panoramic decks, blending modern luxury with the
+            stunning Maasai Mara landscape. <br>
+
+            <br><strong> Dining Area:</strong><br>
+            Guests can enjoy meals under the stars, in the lodge's elegant dining area, or through curated picnics on
+            the savannah. <br>
+
+            <br><strong> Rooms:</strong><br>
+
+            Angama Mara's rooms feature luxurious furnishings, spacious designs, and panoramic views of the Maasai Mara.
+            <br>
+            <br><strong> Culture:</strong><br>
+
+            Angama Mara's interiors blend contemporary elegance with local craftsmanship, featuring floor-to-ceiling
+            glass walls, handcrafted furniture, vibrant Maasai-inspired décor, and luxurious amenities, all designed to
+            provide comfort while showcasing the breathtaking Mara vistas.
+          </p>
+
+
+        </div>
+      </div>
+      <br>
+      <br>
+
+      <div class="text-box-container">
+        <div class="text-box-header"></div>
+        <div class="text-box-content">
+
+          <p>
+            <strong><b>2.</b> Governor's Camp:</strong><br>
+            Nestled in the heart of the Maasai Mara, offering direct access to wildlife-rich plains.
+          </p>
+
+
+        </div>
+      </div>
+
+      <div class="image-row">
+        <div class="image-item">
+          <img src="imgggs/m2.jpg" alt="Image 4">
+        </div>
+        <div class="image-item">
+          <img src="imgggs/m1.jpg" alt="Image 5">
+        </div>
+        <div class="image-item">
+          <img src="imgggs/m3.jpg" alt="Image 6">
+        </div>
+      </div>
+
+      <div class="text-box-container">
+        <div class="text-box-header"></div>
+        <div class="text-box-content">
+
+          <p>
+            <b>Exterior:</b><br>
+
+            Spacious tents with luxurious amenities and stunning views of the Mara River.
+            <br>
+
+
+
+
+            <br><b> Wildlife Experience:</b><br>
+            Prime location for game drives and wildlife sightings, including the "Big Five."
+            <br>
+
+            <br> <b> Guest Room Interior: </b><br>
+            Experience the modern amenities and comfortable furnishings of the lodge's guest rooms, designed to enhance
+            your stay.
+            <br>
+
+            <br> <b>Dining:</b><br>
+            Gourmet meals served in a traditional safari style, offering a true bush dining experience.
+
+
+
+
+
+
+          </p>
+
+
+        </div>
+      </div>
+      <br>
+      <br>
+
+
+
+
+
+
+
+
+
+
+      <div class="text-box-container">
+        <div class="text-box-header"></div>
+        <div class="text-box-content">
+
+          <p>
+            <strong> Airstrips and Transportation</strong><br>
+            Convenient airstrips within the reserve make travel accessible, while 4x4 safari vehicles provide seamless
+            navigation through its rugged terrain.
+
+
+            <br>
+            <br><strong>Visitor Centers</strong> Educational visitor centers provide insights into the reserve’s
+            wildlife, conservation efforts, and Maasai culture.
+            <br>
+            <br><strong>Guided Safari Tours</strong>Expert-guided safari tours ensure a safe and enriching experience,
+            taking you deep into the reserve to observe its extraordinary wildlife and landscapes.
+          </p>
+
+
+        </div>
+      </div>
+      <br>
+      <br>
+      <br>
+
+
+
+
+
+
+
+
+      <div class="text-box-container">
+        <div class="text-box-header">Download The Park Information Here</div>
+        <div class="text-box-content">
+           <center><p><a href="Massai Mara Information.pdf" target="_blank"> Maasai Mara National Reserve Information</a>
+           </p></center>
+         
+
+        </div>
+      </div>
+      <br>
+      <br>
+      <br>
+
+
+
+
+    </center>
+
+
+    <footer class="site-footer">
+      <div class="container">
+        <div class="row">
+          <!-- About Section -->
+          <div class="col-md-4">
+            <h5>About Us</h5>
+            <p>We are dedicated to bringing the wonders of national parks and wildlife to your fingertips. Our
+              mission is to help you explore the beauty of nature and the incredible animals that inhabit
+              these pristine environments.</p>
+          </div>
+
+          <!-- Quick Links Section -->
+          <div class="col-md-4">
+            <h5>Quick Links</h5>
+            <ul>
+              <li><a href="#">Home</a></li>
+              <li><a href="#">National Parks</a></li>
+              <li><a href="#">Wildlife Information</a></li>
+              <li><a href="#">Our Mission</a></li>
+              <li><a href="#">Contact Us</a></li>
+            </ul>
+          </div>
+
+          <!-- Contact Section -->
+          <div class="col-md-4">
+            <h5>Contact Us</h5>
+            <p>Email: support@nationalparks.com</p>
+            <p>Phone: +1 (800) 123-4567</p>
+            <p>Address: 123 Wilderness Ave, Nature City, NC 56789</p>
+          </div>
+        </div>
+
+        <div class="row">
+          <!-- Social Media Section -->
+          <div class="col-12">
+            <div class="social-media">
+              <a href="#" class="social-icon"><i class="fab fa-facebook-f"></i></a>
+              <a href="#" class="social-icon"><i class="fab fa-twitter"></i></a>
+              <a href="#" class="social-icon"><i class="fab fa-instagram"></i></a>
+              <a href="#" class="social-icon"><i class="fab fa-youtube"></i></a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </footer>
+
+
+
+
+
+
+
+
+
+
+
+</body>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"
+  integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
+<script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
+
+</html>
