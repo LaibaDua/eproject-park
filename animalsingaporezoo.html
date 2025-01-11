@@ -1,0 +1,633 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Singapore Zoo</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css" />
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+            height: 100vh;
+            background-image: url(images/back\ grounds.jpg);
+            /* Replace with your actual image path */
+            background-size: cover;
+            background-position: center;
+            background-attachment: fixed;
+            font-family: 'Times New Roman', Times, serif;
+        }
+
+        .navbar {
+            background-color: transparent !important;
+            font-size: 18px;
+            padding: 0.5rem 1rem;
+            position: absolute;
+            width: 100%;
+            z-index: 10;
+        }
+
+        .navbar a.nav-link {
+            color: white;
+            font-weight: bold;
+        }
+
+        .navbar a.nav-link:hover {
+            color: beige;
+            text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.5);
+            transition: 0.3s ease-in-out;
+        }
+
+        .navbar-brand {
+            font-size: 2rem;
+            font-weight: bold;
+            color: white !important;
+        }
+
+        .btn-outline {
+            box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.3);
+            border: none;
+            background-color: black;
+            color: white;
+        }
+
+        .btn-outline:hover {
+            background-color: rgb(180, 180, 90);
+            color: rgb(186, 222, 170);
+        }
+
+        .Park-category {
+            padding: 50px 0;
+            text-align: center;
+
+            margin-top: 80px;
+        }
+
+        .Park-category .btn {
+            margin: 35px;
+        }
+
+
+
+        .btn-group .dropdown-item a {
+            text-decoration: none;
+            color: inherit;
+        }
+
+        .btn-group .dropdown-item a:hover {
+            color: inherit;
+            /* Optional: Keeps hover effect consistent */
+        }
+
+        /* Remove blue underline from links, including buttons and "Women" heading */
+        a {
+            text-decoration: none !important;
+            color: inherit;
+            /* Inherit color from parent */
+        }
+
+        .text-box-container {
+            width: 50%;
+            max-width: 500px;
+            background-color: rgba(255, 255, 255, 0.8);
+            border: 1px solid #ddd;
+            border-radius: 15px;
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
+            padding: 20px;
+            text-align: left;
+
+        }
+
+        .text-box-header {
+            font-size: 24px;
+            font-weight: bold;
+            color: #2d6a4f;
+            margin-bottom: 15px;
+            text-align: center;
+        }
+
+        .text-box-content {
+            font-size: 16px;
+            color: #555;
+            line-height: 1.6;
+            overflow-y: auto;
+            max-height: 400px;
+            background: transparent;
+        }
+
+        .swiper {
+            width: 100%;
+            height: auto;
+        }
+
+        .hover-text {
+            background-color: rgba(45, 106, 79, 0.749);
+            color: white;
+            position: relative;
+            text-align: center;
+            justify-content: center;
+            padding: 15px;
+            bottom: 50px;
+            width: 100%;
+            box-sizing: border-box;
+            border-radius: 5px;
+            visibility: hidden;
+            opacity: 0;
+            transition: visibility 0s, opacity 0.3s ease-in-out;
+
+        }
+
+
+
+        .swiper-slide:hover .hover-text {
+            visibility: visible;
+            opacity: 1;
+        }
+
+        .site-footer {
+            background-color: #2d6a4f;
+            color: #fff;
+            padding: 40px 0;
+            font-family: Arial, sans-serif;
+        }
+
+        .site-footer h5 {
+            font-size: 18px;
+            font-weight: bold;
+            margin-bottom: 20px;
+        }
+
+        .site-footer p,
+        .site-footer a {
+            color: #ddd;
+            font-size: 14px;
+        }
+
+        .site-footer a:hover {
+            color: #fff;
+            text-decoration: none;
+        }
+
+        .site-footer ul {
+            list-style: none;
+            padding: 0;
+        }
+
+        .site-footer ul li {
+            margin-bottom: 10px;
+        }
+
+        .social-media {
+            text-align: center;
+            margin-top: 20px;
+        }
+
+        .social-icon {
+            color: #fff;
+            font-size: 20px;
+            margin: 0 10px;
+            transition: color 0.3s ease;
+        }
+
+        .social-icon:hover {
+            color: #f1c40f;
+        }
+
+        .swiper {
+            width: 100%;
+            height: auto;
+        }
+
+        .swiper-slide {
+            position: relative;
+            overflow: hidden;
+            border-radius: 5px;
+        }
+
+        .swiper-slide img {
+            display: block;
+            width: 80%;
+            /* Ensure the image scales proportionally */
+            height: auto;
+            /* Maintain the aspect ratio */
+            z-index: 1;
+        }
+
+        .hover-text {
+            background-color: rgba(45, 106, 79, 0.9);
+            color: white;
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 80%;
+            /* Match the slide width */
+            text-align: center;
+            padding: 10px;
+            box-sizing: border-box;
+            transform: translateY(100%);
+            transition: transform 0.3s ease-in-out;
+            z-index: 2;
+        }
+
+        .swiper-slide:hover .hover-text {
+            transform: translateY(0);
+        }
+
+        /* Responsive adjustments */
+        @media (max-width: 768px) {
+            .swiper {
+                width: 100%;
+                /* Full width on smaller devices */
+            }
+
+            .hover-text {
+                font-size: 5px;
+                /* Adjust text size for readability */
+                padding: 8px;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <!-- Navbar -->
+    <nav class="navbar navbar-expand-lg">
+        <div class="container-fluid">
+            <a class="navbar-brand" href="homepage.html">Singapore Zoo</a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarScroll"
+                aria-controls="navbarScroll" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse justify-content-center" id="navbarScroll">
+                <ul class="navbar-nav my-2 my-lg-0 navbar-nav-scroll">
+                    <li class="nav-item">
+                        <a class="nav-link " aria-current="page" href="hompage.html">Home <i class="fa fa-tree"></i></a>
+                                   
+                    </li>
+                    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown">Parks</a>
+                        <ul class="dropdown-menu">
+                            <li><a class="dropdown-item" href="">Yellow Stone</a></li>
+                            <li><a class="dropdown-item" href="">Kruger National Park</a></li>
+                            <li><a class="dropdown-item" href="">Serengeti National Park</a></li>
+                            <li><a class="dropdown-item" href="">Banff National Park</a></li>
+                            <li><a class="dropdown-item" href="">Masai Mara National Reserve</a></li>
+                            <li><a class="dropdown-item" href="">San Diego Zoo Safari Park</a></li>
+                            <li><a class="dropdown-item" href="">Ranthambore National Park</a></li>
+                            <li><a class="dropdown-item" href="">Taronga Zoo</a></li>
+                            <li><a class="dropdown-item" href="">Everglades National Park</a></li>
+                            <li><a class="dropdown-item" href="">Singapore Zoo</a></li>
+                        </ul>
+                    </li>
+
+                    <li class="nav-item">
+                        <a class="nav-link" href="Parkfinder.html">Park Finder <i class="fa fa-paw"></i></a>
+                    </li>
+
+
+                    <li class="nav-item"><a class="nav-link" href="Maps.html">Interactive Park Map <i
+                                class="fa fa-map-marker-alt"></i></a></li>
+
+                </ul>
+                <form class="d-flex">
+                    <input class="form-control me-2" type="search" placeholder="Search">
+                    <button class="btn btn-outline" type="submit">Search</button>
+                </form>
+                <span class="ms-3">
+                    <a href=""><i class="fa-solid fa-user"></i></a>
+                </span>
+
+            </div>
+        </div>
+    </nav>
+    <br>
+    <br>
+    <br>
+
+
+
+
+    <div class="Park-category">
+        <h2 style=" color: white;"><b><a href="">Singapore Zoo</a></b></h2>
+        <div class="d-flex justify-content-center mb-4">
+            <button class="btn btn-dark"><a href="singaporezoo.html" target="_blank">Overview</a></button>
+            <button class="btn btn-dark"><a href="animalsingaporezoo.html">Animals</a></button>
+            <button class="btn btn-dark"><a href="locationsingaporezoo.html" target="_blank">Location</a></button>
+        </div>
+    </div>
+    <center>
+        <div class="text-box-container">
+            <div class="text-box-header">The Bigs Nine</div>
+        </div>
+    </center>
+
+    <div class="row mx-0 px-0 my-5" style="justify-content: center;">
+        <div class="col-md-10">
+
+            <!-- Slider main container -->
+
+            <div class="swiper">
+                <!-- Additional required wrapper -->
+                <div class="swiper-wrapper">
+                    <!-- Slides -->
+                    <div class="swiper-slide"><img src="images/africanlion.jpg" height="200px" width="300px"
+                            alt=""><span class="hover-text"><strong>AFRICANLION:</strong>African lions have been admired
+                            throughout
+                            history for as symbols of courage and strength.
+                            These iconic animals have powerful bodies—in the cat family,
+                            they're second in size only to tigers—and lion roars that can be heard from five miles away.
+                        </span>
+                    </div>
+                    <div class="swiper-slide"><img src="images/chimpanzee.jpg" height="200px" width="300px" alt=""><span
+                            class="hover-text"><strong>CHIMPANZEE:</strong> Like us, chimps are highly social animals,
+                            care for their offspring for years and can live to be over 50. In fact, chimpanzees are our
+                            closest cousins;
+                            we share about 98% of our genes. In their habitat in the forests of Central Africa,
+                            chimpanzees spend most of their days in the treetops.</span>
+                    </div>
+                    <div class="swiper-slide"><img src="images/rhinooo.jpg" height="200px" width="300px" alt=""><span
+                            class="hover-text"><strong>RHINOO:</strong>A rhinoceros is a large, herbivorous mammal known
+                             for its thick skin and one or two horns on its snout. Found primarily in Africa and Asia,
+                              rhinos are endangered due to poaching and habitat loss.</span>
+                    </div>
+                    <div class="swiper-slide"><img src="images/elephant1.jpg" height="200px" width="300px" alt="">
+                        <span class="hover-text"><strong>ELEPHANT</strong> The elephant is the world's largest living
+                            creature.
+                            - The elephant is a species that is both intelligent and obedient. - The elephant is a
+                            four-legged creature with two small eyes, two large ears,
+                            a trunk, and a short tail. - The elephant's four legs are all thick and big..</span>
+                    </div>
+                    <div class="swiper-slide"><img src="images/sunbearrr1.jpg" height="200px" width="300px" alt=""><span
+                            class="hover-text"><strong>SUN BEAR:</strong> Sun bears are named for the golden patches of
+                            fur on their chests,
+                            While their tongues may be extra-big, sun bears are actually the smallest bear species.
+                            Males grow about 5 feet long and weigh up to 150 pounds—that's about half the size of an
+                            adult American black bear.</span>
+                    </div>
+                    <div class="swiper-slide"><img src="images/pandaaaa.jpg" height="200px" width="300px" alt=""><span
+                            class="hover-text"><strong>PANDA:</strong>A panda is a bear species native to China, known
+                            for its distinctive black-and-white fur.
+                            It is primarily herbivorous, with bamboo making up the majority of its diet,
+                            and is classified as vulnerable due to habitat loss and low reproductive rates. </span>
+                    </div>
+                    <div class="swiper-slide"><img src="images/racoondog.jpg" height="200px" width="300px" alt=""><span
+                            class="hover-text"><strong>RACONDOG:</strong> The common raccoon dog, also called the
+                            Chinese or Asian raccoon dog to distinguish
+                            it from the Japanese raccoon dog, is a small, heavy-set, fox-like canid native to East Asia.
+                            Named for its raccoon-like face markings, it is most closely related to foxes.</span>
+                    </div>
+                    <div class="swiper-slide"><img src="images/white tiger.jpg" height="200px" width="300px"
+                            alt=""><span class="hover-text"><strong>WHITE TIGER:</strong> The white tiger is a result of
+                            a rare genetic mutation and the most
+                            efficient way to breed them is by using two tigers who have the recessive genes needed to
+                            produce offspring with a white coat.</span>
+                    </div>
+                    <div class="swiper-slide"><img src="images/zebraaa1.jpg" height="200px" width="300px" alt=""><span
+                            class="hover-text"><strong>ZEBRA:</strong> Zebras are equids, members of the horse family.
+                            They have excellent hearing and eyesight and can run at speeds of up to 35 miles per hour
+                            (56 kilometers per hour).
+                            They also have a powerful kick that can cause serious injury to a predator,
+                            like a lion, a hyena, or an African wild dog.</span>
+                    </div>
+
+
+                </div>
+
+
+            </div>
+        </div>
+    </div>
+
+
+
+    <br>
+    <center>
+        <div class="text-box-container">
+            <div class="text-box-header">Mammals</div>
+        </div>
+    </center>
+
+    <div class="row mx-0 px-0 my-5" style="justify-content: center;">
+        <div class="col-md-10">
+
+            <!-- Slider main container -->
+
+            <div class="swiper">
+                <!-- Additional required wrapper -->
+                <div class="swiper-wrapper">
+                    <!-- Slides -->
+                    <div class="swiper-slide"><img src="images/meerkats.jpg" height="200px" width="300px" alt=""><span
+                            class="hover-text"><strong>MEERKATS:</strong> <span>Meerkats are small, social mammals
+                                native to southern Africa,
+                                known for their upright posture and cooperative behavior within groups.
+                                They live in large colonies and are famous for their vigilant guarding against
+                                predators.</span>
+                    </div>
+
+                    <div class="swiper-slide"><img src="images/orangutannn.jpg" height="200px" width="300px" alt=""><span
+                            class="hover-text"><strong>ORANGUTANS</strong>:</strong> Orangutans are great apes found in
+                            the rainforests of Borneo and Sumatra,
+                            known for their reddish-brown fur and exceptional intelligence.
+                            They are mostly solitary, spending much of their time in trees and using tools to gather
+                            food.</span>
+                    </div>
+
+                    <div class="swiper-slide"><img src="images/racoondog.jpg" height="200px" width="300px" alt=""><span
+                            class="hover-text"><strong>RACONDOG:</strong> The common raccoon dog, also called the
+                            Chinese or Asian raccoon dog to distinguish
+                            it from the Japanese raccoon dog, is a small, heavy-set, fox-like canid native to East Asia.
+                            Named for its raccoon-like face markings, it is most closely related to foxes.</span>
+                    </div>
+
+                    <div class="swiper-slide"><img src="images/oteers.jpg" height="200px" width="300px" alt=""><span
+                            class="hover-text"><strong>OTEERS:</strong> Otters are carnivorous mammals in the subfamily
+                            Lutrinae.
+                            The 13 extant otter species are all semiaquatic
+                            , aquatic, or marine. Lutrinae is a branch of the Mustelidae family,
+                            which includes weasels, badgers, mink, and wolverines, among other animals.</span>
+                    </div>
+
+                    <div class="swiper-slide"><img src="images/koalos11.jpg" height="200px" width="300px" alt=""><span
+                            class="hover-text"><strong>KOALOS:</strong> The koala, sometimes inaccurately called the
+                            koala bear,
+                            is an arboreal herbivorous marsupial native to Australia. It is the only extant
+                            representative of the family Phascolarctidae. Its closest living relatives are the
+                            wombats</span>
+                    </div>
+
+
+                </div>
+
+
+            </div>
+        </div>
+    </div>
+
+    <br>
+    <br>
+    <br>
+    <br>
+
+    <center>
+        <div class="text-box-container">
+            <div class="text-box-header">Mammals</div>
+        </div>
+    </center>
+
+    <div class="row mx-0 px-0 my-5" style="justify-content: center;">
+        <div class="col-md-10">
+
+            <!-- Slider main container -->
+
+            <div class="swiper">
+                <!-- Additional required wrapper -->
+                <div class="swiper-wrapper">
+                    <!-- Slides -->
+                    <div class="swiper-slide"><img src="images/javanmyna11.jpg" height="200px" width="300px" alt=""><span
+                            class="hover-text"><strong>JAVANMYNA:</strong> The Javan myna, also known as the
+                            white-vented myna, is a species of myna.
+                            It is a member of the starling family. It is native to Bali and Java.
+                            It has been introduced to other Asian countries, and as far away as Puerto Rico. </span>
+                    </div>
+
+                    <div class="swiper-slide"><img src="images/Crimson sunbird.jpg" height="200px" width="300px"
+                            alt=""><span class="hover-text"><strong>CRIMSON SUNBIRD:</strong>The crimson sunbird is a
+                            species of bird in the sunbird family which feed largely on nectar
+                            . They may also take insects, especially when feeding their young. Flight is fast and direct
+                            on their short wings.
+                            Most species can take nectar by hovering like a hummingbird, but usually perch to feed.
+                        </span>
+                    </div>
+
+                    <div class="swiper-slide"><img src="images/Ashy tailorbird.jpg" height="200px" width="300px"
+                            alt=""><span class="hover-text"><strong>ASHYTAILOR:</strong>The ashy tailorbird is a species
+                            of bird formerly placed in the
+                            "Old World warbler" assemblage, it but now placed in the family Cisticolidae.
+                            It is found in Brunei, Indonesia, Malaysia, Myanmar, the Philippines, Singapore, and
+                            Thailand, Vietnam </span>
+                    </div>
+
+                    <div class="swiper-slide"><img src="images/zebra_doveee.jpg" height="200px" width="300px" alt=""><span
+                            class="hover-text"><strong>ZEBRA DOVE:</strong>The zebra dove, also known as the barred
+                            ground dove, or barred dove,
+                            is a species of bird of the dove family, Columbidae, native to Southeast Asia.
+                            They are small birds with a long tail, predominantly brownish-grey in colour with
+                            black-and-white barring </span>
+                    </div>
+
+                    <div class="swiper-slide"><img src="images/green piegon.jpg" height="200px" width="300px"
+                            alt=""><span class="hover-text"><strong>The pink-necked green pigeon (Treron vernans) is a
+                                species of bird of the
+                                pigeon and dove family, Columbidae. It is a common species of Southeast Asia</span>
+                    </div>
+
+
+                </div>
+
+
+            </div>
+        </div>
+    </div>
+
+
+
+
+
+
+    <br>
+    <br>
+    <br>
+       <br>
+        <br>
+
+
+
+
+    <br>
+    <br>
+    <br>
+    <br>
+    <footer class="site-footer">
+        <div class="container">
+            <div class="row">
+                <!-- About Section -->
+                <div class="col-md-4">
+                    <h5>About Us</h5>
+                    <p>We are dedicated to bringing the wonders of national parks and wildlife to your fingertips. Our
+                        mission is to help you explore the beauty of nature and the incredible animals that inhabit
+                        these pristine environments.</p>
+                </div>
+
+                <!-- Quick Links Section -->
+                <div class="col-md-4">
+                    <h5>Quick Links</h5>
+                    <ul>
+                        <li><a href="#">Home</a></li>
+                        <li><a href="#">National Parks</a></li>
+                        <li><a href="#">Wildlife Information</a></li>
+                        <li><a href="#">Our Mission</a></li>
+                        <li><a href="#">Contact Us</a></li>
+                    </ul>
+                </div>
+                <br>
+                <!-- Contact Section -->
+                <div class="col-md-4">
+                    <h5>Contact Us</h5>
+                    <p>Email: support@nationalparks.com</p>
+                    <p>Phone: +1 (800) 123-4567</p>
+                    <p>Address: 123 Wilderness Ave, Nature City, NC 56789</p>
+                </div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+</body>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"
+    integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz"
+    crossorigin="anonymous"></script>
+<script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
+
+<script>
+    const swiper = new Swiper('.swiper', {
+        // Optional parameters
+        direction: 'horizontal',
+        loop: true,
+        slidesPerView: 3,
+        autoplay: {
+            delay: 5000,
+        },
+
+        // effect: 'coverflow',
+        // coverflowEffect: {
+        //     rotate: 0,
+        //     slideShadows: false,
+        //     depth: 100,
+        //     modifier: 2,
+        // },
+
+        effect: 'slide',
+
+
+    });
+</script>
+
+</html>
