@@ -1,0 +1,550 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>National Park</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css" />
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+            height: 100vh;
+            background-image: url(img/back2.jpeg);
+            /* Replace with your actual image path */
+            background-size: cover;
+            background-position: center;
+            background-attachment: fixed;
+            font-family: 'Times New Roman', Times, serif;
+        }
+
+        .navbar {
+            background-color: transparent !important;
+            font-size: 18px;
+            padding: 0.5rem 1rem;
+            position: absolute;
+            width: 100%;
+            z-index: 10;
+        }
+
+        .navbar a.nav-link {
+            color: white;
+            font-weight: bold;
+        }
+
+        .navbar a.nav-link:hover {
+            color: beige;
+            text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.5);
+            transition: 0.3s ease-in-out;
+        }
+
+        .navbar-brand {
+            font-size: 2rem;
+            font-weight: bold;
+            color: white !important;
+        }
+
+        .btn-outline {
+            box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.3);
+            border: none;
+            background-color: black;
+            color: white;
+        }
+
+        .btn-outline:hover {
+            background-color: rgb(180, 180, 90);
+            color: rgb(186, 222, 170);
+        }
+
+        .Park-category {
+            padding: 50px 0;
+            text-align: center;
+
+            margin-top: 80px;
+        }
+
+        .Park-category .btn {
+            margin: 35px;
+        }
+
+
+
+        .btn-group .dropdown-item a {
+            text-decoration: none;
+            color: inherit;
+        }
+
+        .btn-group .dropdown-item a:hover {
+            color: inherit;
+            /* Optional: Keeps hover effect consistent */
+        }
+
+        /* Remove blue underline from links, including buttons and "Women" heading */
+        a {
+            text-decoration: none !important;
+            color: inherit;
+            /* Inherit color from parent */
+        }
+
+        .text-box-container {
+            width: 50%;
+            max-width: 500px;
+            background-color: rgba(255, 255, 255, 0.8);
+            border: 1px solid #ddd;
+            border-radius: 15px;
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
+            padding: 20px;
+            text-align: left;
+
+        }
+
+        .text-box-header {
+            font-size: 24px;
+            font-weight: bold;
+            color: #2d6a4f;
+            margin-bottom: 15px;
+            text-align: center;
+        }
+
+        .text-box-content {
+            font-size: 16px;
+            color: #555;
+            line-height: 1.6;
+            overflow-y: auto;
+            max-height: 400px;
+            background: transparent;
+        }
+
+        swiper {
+            width: 100%;
+            height: auto;
+        }
+
+        .swiper-slide {
+            position: relative;
+            overflow: hidden;
+            border-radius: 5px;
+        }
+
+        .swiper-slide img {
+            display: block;
+            width: 80%;
+            /* Ensure the image scales proportionally */
+            height: auto;
+            /* Maintain the aspect ratio */
+            z-index: 1;
+        }
+
+        .hover-text {
+            background-color: rgba(45, 106, 79, 0.9);
+            color: white;
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 80%;
+            /* Match the slide width */
+            text-align: center;
+            padding: 10px;
+            box-sizing: border-box;
+            transform: translateY(100%);
+            transition: transform 0.3s ease-in-out;
+            z-index: 2;
+        }
+
+        .swiper-slide:hover .hover-text {
+            transform: translateY(0);
+        }
+
+        /* Responsive adjustments */
+        @media (max-width: 768px) {
+            .swiper {
+                width: 100%;
+                /* Full width on smaller devices */
+            }
+
+            .hover-text {
+                font-size: 5px;
+                /* Adjust text size for readability */
+                padding: 8px;
+            }
+        }
+        
+        .swiper {
+            width: 100%;
+            height: auto;
+        }
+
+        .swiper-slide {
+            position: relative;
+            /* Create a positioning context */
+            overflow: hidden;
+            border-radius: 5px;
+        }
+
+        .swiper-slide img {
+            display: block;
+            z-index: 1;
+            /* Place image below the text */
+        }
+
+        .hover-text {
+            background-color: rgba(45, 106, 79, 0.9);
+            color: white;
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 300px;
+            /* Automatically match the image width */
+            text-align: center;
+            padding: 10px;
+            box-sizing: border-box;
+            transform: translateY(100%);
+            transition: transform 0.3s ease-in-out;
+            z-index: 2;
+            /* Ensure text is above the image */
+        }
+
+        .swiper-slide:hover .hover-text {
+            transform: translateY(0);
+            /* Slide the text up on hover */
+        }
+        .site-footer {
+    background-color: #2d6a4f;
+    color: #fff;
+    padding: 40px 0;
+    font-family: Arial, sans-serif;
+}
+
+.site-footer h5 {
+    font-size: 18px;
+    font-weight: bold;
+    margin-bottom: 20px;
+}
+
+.site-footer p, .site-footer a {
+    color: #ddd;
+    font-size: 14px;
+}
+
+.site-footer a:hover {
+    color: #fff;
+    text-decoration: none;
+}
+
+.site-footer ul {
+    list-style: none;
+    padding: 0;
+}
+
+.site-footer ul li {
+    margin-bottom: 10px;
+}
+
+.social-media {
+    text-align: center;
+    margin-top: 20px;
+}
+
+.social-icon {
+    color: #fff;
+    font-size: 20px;
+    margin: 0 10px;
+    transition: color 0.3s ease;
+}
+
+.social-icon:hover {
+    color: #f1c40f;
+}
+
+        
+    </style>
+</head>
+
+<body>
+    <!-- Navbar -->
+    <nav class="navbar navbar-expand-lg">
+        <div class="container-fluid">
+            <a class="navbar-brand" href="homepage.html">National Park</a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarScroll"
+                aria-controls="navbarScroll" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse justify-content-center" id="navbarScroll">
+                <ul class="navbar-nav my-2 my-lg-0 navbar-nav-scroll">
+                    <li class="nav-item"><a class="nav-link" href="homepage.html">Home<i class="fa fa-tree"></i></a>
+                    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown">Parks</a>
+                        <ul class="dropdown-menu">
+                            <li><a class="dropdown-item" href="">Yellow Stone</a></li>
+                            <li><a class="dropdown-item" href="">Canyon National Park</a></li>
+                            <li><a class="dropdown-item" href="">Serengeti National Park</a></li>
+                            <li><a class="dropdown-item" href=""></a>Banff National Park</li>
+                            <li><a class="dropdown-item" href=""></a>Masai Mara National Reserve</li>
+                            <li><a class="dropdown-item" href="">San Diego Zoo Safari Park</a></li>
+                            <li><a class="dropdown-item" href="">Ranthambore National Park</a></li>
+                            <li><a class="dropdown-item" href="">Taronga Zoo</a></li>
+                            <li><a class="dropdown-item" href="">Everglades National Park</a></li>
+                            <li><a class="dropdown-item" href="">singapore zoo Park</a></li>
+                            
+                        </ul>
+                    </li>
+
+                    <li class="nav-item"><a class="nav-link" href="">Park Finder <i class="fa fa-paw"></i> </a></li>
+                    <li class="nav-item"><a class="nav-link" href="">Interactive Park Map <i class="fa fa-map-marker-alt"></i> </a></li>
+                       
+
+
+
+                </ul>
+                <form class="d-flex">
+                    <input class="form-control me-2" type="search" placeholder="Search">
+                    <button class="btn btn-outline" type="submit">Search</button>
+                </form>
+                <span class="ms-3">
+                    <a href="form.html"><i class="fa-solid fa-user"></i></a>
+                </span>
+                <span class="ms-3">
+                    
+                </span>
+            </div>
+        </div>
+    </nav>
+    <br>
+    <br>
+    <br>
+
+
+
+
+    <div class="Park-category">
+        <h2 style=" color: white;"><b><a href="">Everglades National Park</a></b></h2>
+        <div class="d-flex justify-content-center mb-4">
+            <button class="btn btn-dark"><a href="Everglade park index.html" target="_blank" class="nav-link">Overview</a></button>
+            <button class="btn btn-dark"><a href="Everglade park animals.html" target="_blank" class="nav-link">Animals</a></button>
+            <button class="btn btn-dark"><a href="Everglade park location.html" target="_blank" class="nav-link">Location</a></button>
+        </div>
+    </div>
+
+    <center>
+        <div class="text-box-container">
+            <div class="text-box-header">The Big five</div>
+        </div>
+    </center>
+    <div class="row mx-0 px-0 my-5" style="justify-content: center;">
+        <div class="col-md-10">
+
+            <!-- Slider main container -->
+
+            <div class="swiper">
+                <!-- Additional required wrapper -->
+                <div class="swiper-wrapper">
+                    <!-- Slides -->
+                    <div class="swiper-slide"><img src="img/n1.jpeg" height="200px"
+                            width="300px" alt=""> <span class="hover-text"><strong>American Alligator:</strong>The American Alligator (Alligator mississippiensis) is a large reptile native to the southeastern United States. It is typically found in freshwater environments like rivers, lakes, and swamps. Males can grow up to 13-15 feet long, while females are smaller, reaching around 9-10 feet. These alligators are apex predators, feeding on fish, birds, mammals, and occasionally larger prey. They are known for their powerful bite, thick armor-like skin, and their ability to regulate their body temperature through basking in the sun. They were once endangered due to hunting but have made a remarkable recovery through conservation efforts.
+
+
+
+
+
+
+                            </span></div>
+                    <div class="swiper-slide"><img src="img/n2.jpeg" height="200px"
+                            width="300px" alt=""> <span class="hover-text"><strong>American Crocodile:</strong>The American Crocodile (Crocodylus acutus) is a large reptile found in coastal areas of the southeastern United States, particularly in Florida, as well as parts of Central and South America and the Caribbean. Unlike alligators, American crocodiles prefer saltwater or brackish habitats, such as estuaries, mangrove swamps, and coastal rivers. They are generally lighter in color, with a pale gray-green appearance.</span></div>
+                    <div class="swiper-slide"><img src="img/n3.jpeg" height="200px"
+                            width="300px" alt=""> <span class="hover-text"><strong>Florida Panther:</strong>The Florida Panther (Puma concolor coryi) is a subspecies of cougar found primarily in the forests and swamps of southern Florida, USA. It is a medium-sized wild cat, with males typically weighing between 120-160 pounds and females around 60-100 pounds. Their coat is tawny with lighter undersides, and they have a long, muscular tail.</span></div>
+                    <div class="swiper-slide"><img src="img/n4.jpeg" height="200px"
+                            width="300px" alt=""> <span class="hover-text"><strong>Bottlenose Dolphin:</strong>The Bottlenose Dolphin (Tursiops truncatus) is one of the most well-known and widely distributed species of dolphin. They are found in warm and temperate seas worldwide, including coastal areas and offshore waters. Bottlenose dolphins are highly intelligent and social animals, living in groups called pods, which can range from a few individuals to over 100 dolphins.</span></div>
+                    <div class="swiper-slide"><img src="img/n5.jpeg" height="200px"
+                            width="300px" alt=""> <span class="hover-text"><strong>Roseate Spoonbill</strong>The Roseate Spoonbill (Platalea ajaja) is a striking wader bird found in coastal habitats, such as wetlands, mangroves, and mudflats, throughout the Americas, particularly in the southeastern United States, Central America, and parts of South America. Known for its vibrant pink plumage, which is a result of the carotenoid pigments in its diet, the Roseate Spoonbill has a distinctive spoon-shaped bill that it uses to forage for food in shallow waters.</span></div>
+                    "
+        
+
+                </div>
+
+
+            </div>
+        </div>
+    </div>
+
+
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    
+
+
+
+
+    <center>
+        <div class="text-box-container">
+            <div class="text-box-header">Mammals</div>
+        </div>
+    </center>
+
+    <div class="row mx-0 px-0 my-5" style="justify-content: center;">
+        <div class="col-md-10">
+
+            <!-- Slider main container -->
+
+            <div class="swiper">
+                <!-- Additional required wrapper -->
+                <div class="swiper-wrapper">
+                    <!-- Slides -->
+                    <div class="swiper-slide"><img src="img/m1.jpeg" height="200px"
+                            width="300px" alt=""><span class="hover-text"><strong>GRANT'S GAZELLE:</strong>Grant's Gazelle (Nanger granti) is a species of antelope found in East Africa, primarily in Kenya, Tanzania, and parts of Uganda. It is one of the most well-known and widespread species of gazelle, typically found in savannas, grasslands, and open woodlands.</span></div>
+                    <div class="swiper-slide"><img src="img/m2.jpeg" height="200px"
+                            width="300px" alt=""><span class="hover-text"><strong>SPOTTED HYENA:</strong>The Spotted Hyena (Crocuta crocuta) is a large carnivorous mammal found throughout sub-Saharan Africa. It is one of the most well-known and socially complex predators in the animal kingdom, known for its distinctive "laugh," which is actually a series of vocalizations used for communication within the clan.</span></div>
+                    <div class="swiper-slide"><img src="img/m3.jpeg"
+                            height="200px" width="300px" alt=""><span class="hover-text"><strong>CRESTED PORCUPINE:</strong>The Crested Porcupine (Hystrix cristata) is a large species of porcupine found in parts of North Africa and the Middle East, including countries like Morocco, Egypt, and Israel. It is notable for its distinctive crest of long, spiny quills that extend from the back of its head, giving it a unique appearance.</span></div>
+                    <div class="swiper-slide"><img src="img/m4.jpeg" height="200px"
+                            width="300px" alt=""><span class="hover-text"><strong>AARDWOLF:</strong>The Aardwolf (Proteles cristata) is a nocturnal mammal native to the savannas and grasslands of sub-Saharan Africa. It is a small, insectivorous member of the hyena family, though it differs from the more well-known spotted hyena in both size and diet.</span></div>
+                    <div class="swiper-slide"><img src="img/m5.jpeg"
+                            height="200px" width="300px" alt=""><span class="hover-text"><strong>HONEY BADGER:</strong>The Honey Badger (Mellivora capensis) is a small but fearless carnivore found throughout sub-Saharan Africa, the Middle East, and parts of Asia. It is known for its boldness and tenacity, often tackling prey much larger than itself or defending itself aggressively against potential threats. Despite its name, the honey badger is not closely related to the European badger, and its diet is much more varied.</span></div>
+
+
+                </div>
+
+
+            </div>
+        </div>
+    </div>
+
+
+
+
+
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    
+
+
+
+
+    <center>
+        <div class="text-box-container">
+            <div class="text-box-header">Birds</div>
+        </div>
+    </center>
+
+    <div class="row mx-0 px-0 my-5" style="justify-content: center;">
+        <div class="col-md-10">
+
+            <!-- Slider main container -->
+
+            <div class="swiper">
+                <!-- Additional required wrapper -->
+                <div class="swiper-wrapper">
+                    <!-- Slides -->
+                    <div class="swiper-slide"><img src="img/n5.jpeg"
+                            height="200px" width="300px" alt=""><span class="hover-text"><strong>Roseate Spoonbill:</strong>The Roseate Spoonbill (Platalea ajaja) is a striking wader bird found in coastal habitats, such as wetlands, mangroves, and mudflats, throughout the Americas, particularly in the southeastern United States, Central America, and parts of South America. Known for its vibrant pink plumage, which is a result of the carotenoid pigments in its diet, the Roseate Spoonbill has a distinctive spoon-shaped bill that it uses to forage for food in shallow waters.</span></div>
+                    <div class="swiper-slide"><img src="img/b2.webp"
+                            height="200px" width="300px" alt=""><span class="hover-text"><strong>Great Blue Heron:</strong>The Great Blue Heron (Ardea herodias) is a large wading bird native to North and Central America, found in a variety of wetland habitats, including lakes, rivers, marshes, and coastal areas. It is the largest heron species in North America, known for its impressive size, elegant appearance, and hunting skills.</span></div>
+                    <div class="swiper-slide"><img src="img/b3.webp"
+                            height="200px" width="300px" alt=""><span class="hover-text"><strong>Anhinga:</strong>The Anhinga (Anhinga anhinga), also known as the "snakebird" or "water turkey," is a large water bird native to the Americas, found in freshwater habitats such as lakes, rivers, and wetlands. Its distinctive appearance and impressive diving abilities make it easily recognizable.</span></div>
+                    <div class="swiper-slide"><img src="img/b4.webp"
+                            height="200px" width="300px" alt=""><span class="hover-text"><strong>Wood Stork:</strong>The Wood Stork (Mycteria americana) is a large wading bird native to the southeastern United States, Central America, and parts of South America. It is one of the few stork species found in North America and is easily recognizable due to its distinctive appearance.</span></div>
+                    <div class="swiper-slide"><img src="img/b5.webp"
+                            height="200px" width="300px" alt=""><span class="hover-text"><strong>Snail Kite:</strong>The Snail Kite (Rostrhamus sociabilis) is a medium-sized raptor found in freshwater wetlands across parts of the Americas, particularly in southern Florida, Central America, and parts of South America. It is known for its specialized diet and unique hunting style.</span></div>
+
+                </div>
+
+
+            </div>
+        </div>
+    </div>
+
+
+
+    <br>
+    <br>
+    <br>
+    <br>
+    <footer class="site-footer">
+        <div class="container">
+            <div class="row">
+                <!-- About Section -->
+                <div class="col-md-4">
+                    <h5>About Us</h5>
+                    <p>We are dedicated to bringing the wonders of national parks and wildlife to your fingertips. Our mission is to help you explore the beauty of nature and the incredible animals that inhabit these pristine environments.</p>
+                </div>
+    
+                <!-- Quick Links Section -->
+                <div class="col-md-4">
+                    <h5>Quick Links</h5>
+                    <ul>
+                        <li><a href="#">Home</a></li>
+                        <li><a href="#">National Parks</a></li>
+                        <li><a href="#">Wildlife Information</a></li>
+                        <li><a href="#">Our Mission</a></li>
+                        <li><a href="#">Contact Us</a></li>
+                    </ul>
+                </div>
+    
+                <!-- Contact Section -->
+                <div class="col-md-4">
+                    <h5>Contact Us</h5>
+                    <p>Email: support@nationalparks.com</p>
+                    <p>Phone: +1 (800) 123-4567</p>
+                    <p>Address: 123 Wilderness Ave, Nature City, NC 56789</p>
+                </div>
+            </div>
+    
+            <div class="row">
+                <!-- Social Media Section -->
+                <div class="col-12">
+                    <div class="social-media">
+                        <a href="#" class="social-icon"><i class="fab fa-facebook-f"></i></a>
+                        <a href="#" class="social-icon"><i class="fab fa-twitter"></i></a>
+                        <a href="#" class="social-icon"><i class="fab fa-instagram"></i></a>
+                        <a href="#" class="social-icon"><i class="fab fa-youtube"></i></a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </footer>    
+                            
+       
+    
+    
+
+
+</body>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"
+    integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz"
+    crossorigin="anonymous"></script>
+<script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
+
+<script>
+    const swiper = new Swiper('.swiper', {
+        // Optional parameters
+        direction: 'horizontal',
+        loop: true,
+        slidesPerView: 3,
+        autoplay: {
+            delay: 5000,
+        },
+
+        // effect: 'coverflow',
+        // coverflowEffect: {
+        //     rotate: 0,
+        //     slideShadows: false,
+        //     depth: 100,
+        //     modifier: 2,
+        // },
+
+        effect: 'slide',
+        spacebetween:20,
+
+    });
+</script>
+
+</html>

@@ -1,0 +1,505 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>National Park</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css" />
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+            height: 100vh;
+            background-image: url(images/back.jpeg);
+            /* Replace with your actual image path */
+            background-size: cover;
+            background-position: center;
+            background-attachment: fixed;
+            font-family: 'Times New Roman', Times, serif;
+        }
+
+        .navbar {
+            background-color: transparent !important;
+            font-size: 18px;
+            padding: 0.5rem 1rem;
+            position: absolute;
+            width: 100%;
+            z-index: 10;
+        }
+
+        .navbar a.nav-link {
+            color: white;
+            font-weight: bold;
+        }
+
+        .navbar a.nav-link:hover {
+            color: beige;
+            text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.5);
+            transition: 0.3s ease-in-out;
+        }
+
+        .navbar-brand {
+            font-size: 2rem;
+            font-weight: bold;
+            color: white !important;
+        }
+
+        .btn-outline {
+            box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.3);
+            border: none;
+            background-color: black;
+            color: white;
+        }
+
+        .btn-outline:hover {
+            background-color: rgb(180, 180, 90);
+            color: rgb(186, 222, 170);
+        }
+
+        .Park-category {
+            padding: 50px 0;
+            text-align: center;
+
+            margin-top: 80px;
+        }
+
+        .Park-category .btn {
+            margin: 35px;
+        }
+
+
+
+        .btn-group .dropdown-item a {
+            text-decoration: none;
+            color: inherit;
+        }
+
+        .btn-group .dropdown-item a:hover {
+            color: inherit;
+            /* Optional: Keeps hover effect consistent */
+        }
+
+        /* Remove blue underline from links, including buttons and "Women" heading */
+        a {
+            text-decoration: none !important;
+            color: inherit;
+            /* Inherit color from parent */
+        }
+
+        .text-box-container {
+            width: 50%;
+            max-width: 500px;
+            background-color: rgba(255, 255, 255, 0.8);
+            border: 1px solid #ddd;
+            border-radius: 15px;
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
+            padding: 20px;
+            text-align: left;
+
+        }
+
+        .text-box-header {
+            font-size: 24px;
+            font-weight: bold;
+            color: #2d6a4f;
+            margin-bottom: 15px;
+            text-align: center;
+        }
+
+        .text-box-content {
+            font-size: 16px;
+            color: #555;
+            line-height: 1.6;
+            overflow-y: auto;
+            max-height: 400px;
+            background: transparent;
+        }
+
+        .swiper {
+            width: 100%;
+            height: auto;
+        }
+
+        .swiper-slide {
+            position: relative;
+            overflow: hidden;
+            border-radius: 5px;
+        }
+
+        .swiper-slide img {
+            display: block;
+            width: 80%;
+            /* Ensure the image scales proportionally */
+            height: auto;
+            /* Maintain the aspect ratio */
+            z-index: 1;
+        }
+
+        .hover-text {
+            background-color: rgba(45, 106, 79, 0.9);
+            color: white;
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 80%;
+            /* Match the slide width */
+            text-align: center;
+            padding: 10px;
+            box-sizing: border-box;
+            transform: translateY(100%);
+            transition: transform 0.3s ease-in-out;
+            z-index: 2;
+        }
+
+        .swiper-slide:hover .hover-text {
+            transform: translateY(0);
+        }
+
+        /* Responsive adjustments */
+        @media (max-width: 768px) {
+            .swiper {
+                width: 100%;
+                /* Full width on smaller devices */
+            }
+
+            .hover-text {
+                font-size: 5px;
+                /* Adjust text size for readability */
+                padding: 8px;
+            }
+        }
+    .site-footer {
+    background-color: #2d6a4f;
+    color: #fff;
+    padding: 40px 0;
+    font-family: Arial, sans-serif;
+
+}
+
+.site-footer h5 {
+    font-size: 18px;
+    font-weight: bold;
+    margin-bottom: 20px;
+}
+
+.site-footer p, .site-footer a {
+    color: #ddd;
+    font-size: 14px;
+}
+
+.site-footer a:hover {
+    color: #fff;
+    text-decoration: none;
+}
+
+.site-footer ul {
+    list-style: none;
+    padding: 0;
+}
+
+.site-footer ul li {
+    margin-bottom: 10px;
+}
+
+.social-media {
+    text-align: center;
+    margin-top: 20px;
+}
+
+.social-icon {
+    color: #fff;
+    font-size: 20px;
+    margin: 0 10px;
+    transition: color 0.3s ease;
+}
+
+.social-icon:hover {
+    color: #f1c40f;
+}
+
+        
+    </style>
+</head>
+
+<body>
+    <!-- Navbar -->
+    <nav class="navbar navbar-expand-lg">
+        <div class="container-fluid">
+            <a class="navbar-brand" href="homepage.html">National Park</a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarScroll"
+                aria-controls="navbarScroll" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse justify-content-center" id="navbarScroll">
+                <ul class="navbar-nav my-2 my-lg-0 navbar-nav-scroll">
+                    <li class="nav-item"><a class="nav-link" href="homepage.html">Home</a></li>
+
+                    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown">Parks</a>
+                        <ul class="dropdown-menu">
+                            <li><a class="dropdown-item" href="">Yellow Stone</a></li>
+                            <li><a class="dropdown-item" href="">Kruger National Park</a></li>
+                            <li><a class="dropdown-item" href="">Serengeti National Park</a></li>
+                            <li><a class="dropdown-item" href="">Banff National Park</a></li>
+                            <li><a class="dropdown-item" href="">Masai Mara National Reserve</a></li>
+                            <li><a class="dropdown-item" href="">San Diego Zoo Safari Park</a></li>
+                            <li><a class="dropdown-item" href="">Ranthambore National Park</a></li>
+                            <li><a class="dropdown-item" href="">Taronga Zoo</a></li>
+                            <li><a class="dropdown-item" href="">Everglades National Park</a></li>
+                            <li><a class="dropdown-item" href="">Singapore zoo Park</a></li>
+                        </ul>
+                    </li>
+
+                    <li class="nav-item"><a class="nav-link" href="">About us</a></li>
+                    <li class="nav-item"><a class="nav-link" href="">Contact us</a></li>
+
+
+
+                </ul>
+                <form class="d-flex">
+                    <input class="form-control me-2" type="search" placeholder="Search">
+                    <button class="btn btn-outline" type="submit">Search</button>
+                </form>
+                <span class="ms-3">
+                    <a href="form.html"><i class="fa-solid fa-user"></i></a>
+                </span>
+                <span class="ms-3">
+                    <a href="form.html"><i class="fas fa-shopping-bag"></i></a>
+                </span>
+            </div>
+        </div>
+    </nav>
+    <br>
+    <br>
+    <br>
+
+
+
+
+    <div class="Park-category">
+        <h2 style=" color: white;"><b><a href="">Taronga Zoo National Park</a></b></h2>
+        <div class="d-flex justify-content-center mb-4">
+            <button class="btn btn-dark"><a href="Taronga zoo project.html" target="_blank" class="nav-link">Overview</a></button>
+            <button class="btn btn-dark"><a href="Taronga zoo animal.html" target="_blank" class="nav-link">Animals</a></button>
+            <button class="btn btn-dark"><a href="Taronga zoo location.html" target="_blank" class="nav-link">Location</a></button>
+        </div>
+    </div>
+
+    <center>
+        <div class="text-box-container">
+            <div class="text-box-header">Reptiles and Amphibians</div>
+        </div>
+    </center>
+    <div class="row mx-0 px-0 my-5" style="justify-content: center;">
+        <div class="col-md-10">
+
+            <!-- Slider main container -->
+
+            <div class="swiper">
+                <!-- Additional required wrapper -->
+                <div class="swiper-wrapper">
+                    <!-- Slides -->
+                    <div class="swiper-slide"><img src="taronga images/Boorolong_frog_710x400.jpg" height="200px"
+                            width="300px" alt=""> <span class="hover-text"><strong>Boorolong fROG</strong>The Sumatran lion does not exist as a real animal species. Lions (Panthera leo) are native to Africa and a small population exists in India (Asiatic lions). Sumatra, an island in Indonesia, is home to unique wildlife, including the Sumatran tiger (Panthera tigris sumatrae), but no lions.</span></div>
+                    <div class="swiper-slide"><img src="taronga images/Tuatara_710x400.jpg" height="200px"
+                            width="300px" alt=""> <span class="hover-text"><strong>Tuatara</strong>Giraffes are not native to Sumatra or any part of Southeast Asia. They are native to Africa and are the tallest land animals, belonging to the species Giraffa camelopardalis. Giraffes are known for their long necks, which help them browse leaves from tall trees, primarily acacia. Their unique coat patterns act as camouflage and are distinct for each individual.</span></div>
+                    <div class="swiper-slide"><img src="taronga images/Alligator_710x400.jpg" height="200px"
+                            width="300px" alt=""> <span class="hover-text"><strong>Allugator</strong>The binturong (Arctictis binturong), also known as the "bearcat," is a medium-sized mammal native to Southeast Asia, including Sumatra. Despite its nickname, it is neither a bear nor a cat but belongs to the civet family (Viverridae).</span></div>
+                    <div class="swiper-slide"><img src="taronga images/Bellinger_river_turtle_710x400.jpg" height="200px"
+                            width="300px" alt=""> <span class="hover-text"><strong>Bellinger River Turtle</strong>The pygmy hippopotamus (Choeropsis liberiensis or Hexaprotodon liberiensis) is a small species of hippopotamus native to West Africa, primarily found in countries like Liberia, Sierra Leone, Guinea, and Ivory Coast. It is distinct from the larger common hippopotamus (Hippopotamus amphibius).</span></div>
+                    <div class="swiper-slide"><img src="taronga images/Eyelash_viper_body.jpg" height="200px"
+                            width="300px" alt=""> <span class="hover-text"><strong>Eyelash Viper Body</strong>The eastern bongo (Tragelaphus eurycerus isaaci) is a subspecies of bongo, a large and strikingly beautiful antelope native to the forests of East Africa. It is also known as the mountain bongo due to its habitat in high-altitude montane forests.</span></div>
+                    <div class="swiper-slide"><img src="taronga images/yellow-spotted_bell-frog710x400.jpg" height="200px"
+                            width="300px" alt=""> <span class="hover-text"><strong>Yellow Spotted Bell</strong>The Yellow-spotted Bell Frog (Litoria castanea), also known as the Yellow-spotted Tree Frog, is a critically endangered species endemic to southeastern Australia. </span></div>
+                    <div class="swiper-slide"><img src="taronga images/Pygmy Python.jpg" height="200px"
+                            width="300px" alt=""> <span class="hover-text"><strong>Pygmy Python</strong>The Pygmy Python (Antaresia perthensis), also known as the Anthill Python, holds the title of the world's smallest python species, reaching a maximum length of just 62 cm. 
+                            </span></div>
+                    <div class="swiper-slide"><img src="taronga images/Frilled_Lizard_710x400.jpg" height="200px"
+                            width="300px" alt=""> <span class="hover-text"><strong>Frilled Lizard</strong>The Frilled Lizard (Chlamydosaurus kingii), also known as the Frill-necked Lizard, is a fascinating reptile native to northern Australia and southern New Guinea. Known for its dramatic neck frill, this species is an iconic example of Australia’s unique wildlife. </span></div>
+                    <div class="swiper-slide"><img src="taronga images/Veiled Chameleon.jpg" height="200px"
+                            width="300px" alt=""> <span class="hover-text"><strong>Veiled Chameleon</strong>The Veiled Chameleon (Chamaeleo calyptratus) is a striking and fascinating reptile known for its ability to change color and its unique physical adaptations. It is native to the mountainous regions of Yemen and Saudi Arabia.</span></div>
+
+                </div>
+
+
+            </div>
+        </div>
+    </div>
+
+
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    
+
+
+
+
+    <center>
+        <div class="text-box-container">
+            <div class="text-box-header">Mammals</div>
+        </div>
+    </center>
+
+    <div class="row mx-0 px-0 my-5" style="justify-content: center;">
+        <div class="col-md-10">
+
+            <!-- Slider main container -->
+
+            <div class="swiper">
+                <!-- Additional required wrapper -->
+
+                <div class="swiper-wrapper">
+                    <!-- Slides -->
+                    <div class="swiper-slide"><img src="taronga images/lion.jpeg" height="200px"
+                            width="300px" alt=""><span class="hover-text"><strong>American Lion:</strong>The American lion (Panthera atrox), also known as the North American lion or Naheho’ bahamute (by some Native American tribes), is an extinct species of large cat that lived during the Pleistocene epoch (about 340,000 to 11,000 years ago). It is considered one of the largest felids to have ever existed.</span></div>
+                    <div class="swiper-slide"><img src="taronga images/asian elephant.jpeg" height="200px"
+                            width="300px" alt=""><span class="hover-text"><strong>Asian Elephant:</strong>The Asian elephant (Elephas maximus) is the largest land animal in Asia and is a keystone species in the ecosystems it inhabits. It is smaller than the African elephant and is native to the forests and grasslands of South and Southeast Asia, including India, Sri Lanka, Nepal, Myanmar, Thailand, and Indonesia.</span></div>
+                    <div class="swiper-slide"><img src="taronga images/sq.monkey.jpeg"
+                            height="200px" width="300px" alt=""><span class="hover-text"><strong>Squirrel Monkey:</strong>The squirrel monkey (Saimiri spp.) is a small, agile primate known for its playful nature and distinctive appearance. They are native to the tropical forests of Central and South America.</span></div>
+                    <div class="swiper-slide"><img src="taronga images/chim.m" height="200px"
+                            width="300px" alt=""><span class="hover-text"><strong>Chimpanzee:</strong>The chimpanzee (Pan troglodytes) is one of the closest living relatives to humans, sharing about 98% of our DNA. They are highly intelligent, social primates found in the forests and savannas of West and Central Africa.</span></div>
+                    <div class="swiper-slide"><img src="taronga images/kangroo.jpeg" height="150px"
+                            height="200px" width="300px" alt=""><span class="hover-text"><strong>Red Kangaroo:</strong>The red kangaroo (Osphranter rufus) is the largest marsupial and one of Australia's most iconic animals. It is well-adapted to the arid and semi-arid regions of the continent, thriving in open plains and deserts.</span></div>
+
+
+                </div>
+
+
+            </div>
+        </div>
+    </div>
+
+
+
+
+
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    
+
+
+
+
+    <center>
+        <div class="text-box-container">
+            <div class="text-box-header">Birds</div>
+        </div>
+    </center>
+
+    <div class="row mx-0 px-0 my-5" style="justify-content: center;">
+        <div class="col-md-10">
+
+            <!-- Slider main container -->
+
+            <div class="swiper">
+                <!-- Additional required wrapper -->
+                <div class="swiper-wrapper">
+                    <!-- Slides -->
+                    <div class="swiper-slide"><img src="taronga images/Superb fruit dove birds.html"
+                            height="200px" width="300px" alt=""><span class="hover-text"><strong>Superb fruit dove:</strong>Tiny rainforest dove with white belly and white vent (compared to Rose-crowned Fruit-Dove which has a yellow belly and vent).</span></div>
+                    <div class="swiper-slide"><img src="taronga images/Noisy pitta bird.webp"
+                            height="200px" width="300px" alt=""><span class="hover-text"><strong>Noisy pitta</strong>:</strong>The adult Noisy Pitta has a mostly black head and neck but the crown of its head is chestnut brown with a central black stripe.</span></div>
+                    <div class="swiper-slide"><img src="taronga images/Forest kingfisher.webp"
+                            height="200px" width="300px" alt=""><span class="hover-text"><strong>Forest kingfisher:</strong>It is a predominantly blue and white bird. It is found in Indonesia, New Guinea and coastal eastern and Northern Australia. </span></div>
+                    <div class="swiper-slide"><img src="taronga images/Barking owl.webp"
+                            height="200px" width="300px" alt=""><span class="hover-text"><strong>Barking Owl:</strong>They are a medium-sized brown owl and have a characteristic voice with calls ranging from a barking dog noise to an intense human-like howl.</span></div>
+                    <div class="swiper-slide"><img src="taronga images/Pied heron.webp"
+                            height="200px" width="300px" alt=""><span class="hover-text"><strong>Pied heron:</strong>The pied heron (Egretta picata ), also known as the pied egret is a bird found in coastal and subcoastal areas of monsoonal northern Australia as well as some parts of Wallacea and New Guinea.</span></div>
+
+                </div>
+
+
+            </div>
+        </div>
+    </div>
+
+
+
+    <br>
+    <br>
+    <br>
+    <br>
+    <footer class="site-footer">
+        <div class="container">
+            <div class="row">
+                <!-- About Section -->
+                <div class="col-md-4">
+                    <h5>About Us</h5>
+                    <p>We are dedicated to bringing the wonders of national parks and wildlife to your fingertips. Our mission is to help you explore the beauty of nature and the incredible animals that inhabit these pristine environments.</p>
+                </div>
+    
+                <!-- Quick Links Section -->
+                <div class="col-md-4">
+                    <h5>Quick Links</h5>
+                    <ul>
+                        <li><a href="#">Home</a></li>
+                        <li><a href="#">National Parks</a></li>
+                        <li><a href="#">Wildlife Information</a></li>
+                        <li><a href="#">Our Mission</a></li>
+                        <li><a href="#">Contact Us</a></li>
+                    </ul>
+                </div>
+    
+                <!-- Contact Section -->
+                <div class="col-md-4">
+                    <h5>Contact Us</h5>
+                    <p>Email: support@nationalparks.com</p>
+                    <p>Phone: +1 (800) 123-4567</p>
+                    <p>Address: 123 Wilderness Ave, Nature City, NC 56789</p>
+                </div>
+            </div>
+    
+            <div class="row">
+                <!-- Social Media Section -->
+                <div class="col-12">
+                    <div class="social-media">
+                        <a href="#" class="social-icon"><i class="fab fa-facebook-f"></i></a>
+                        <a href="#" class="social-icon"><i class="fab fa-twitter"></i></a>
+                        <a href="#" class="social-icon"><i class="fab fa-instagram"></i></a>
+                        <a href="#" class="social-icon"><i class="fab fa-youtube"></i></a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </footer> 
+    
+
+
+</body>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"
+    integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz"
+    crossorigin="anonymous"></script>
+<script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
+
+<script>
+    const swiper = new Swiper('.swiper', {
+        // Optional parameters
+        direction: 'horizontal',
+        loop: true,
+        slidesPerView: 3,
+        spaceBetween: 20,
+        autoplay: {
+            delay: 5000,
+        },
+
+        
+
+        effect: 'slide',
+        spaceBetween:20,
+
+        
+    });
+    
+</script>
+
+</html>

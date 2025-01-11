@@ -1,0 +1,560 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>National Park</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css">
+    <link
+  rel="stylesheet"
+  href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css"
+/>
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+            height: 100vh;
+            background-image: url(images/back.jpeg); /* Replace with your actual image path */
+            background-size: cover;
+            background-position: center;
+            background-attachment: fixed;
+            font-family: 'Times New Roman', Times, serif;
+        }
+
+        .navbar {
+            background-color: transparent !important;
+            font-size: 18px;
+            padding: 0.5rem 1rem;
+            position: absolute;
+            width: 100%;
+            z-index: 10;
+        }
+
+        .navbar a.nav-link {
+            color: white;
+            font-weight: bold;
+        }
+
+        .navbar a.nav-link:hover {
+            color: beige;
+            text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.5);
+            transition: 0.3s ease-in-out;
+        }
+
+        .navbar-brand {
+            font-size: 2rem;
+            font-weight: bold;
+            color: white!important;
+        }
+
+        .btn-outline {
+            box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.3);
+            border: none;
+            background-color: black;
+            color: white;
+        }
+
+        .btn-outline:hover {
+            background-color: rgb(180, 180, 90);
+            color: rgb(186, 222, 170);
+        }
+
+        .Park-category {
+            padding: 50px 0;
+            text-align: center;
+           
+            margin-top: 80px;
+        }
+
+        .Park-category .btn {
+            margin: 35px;
+        }
+
+        .card {
+            width: 18rem;
+            margin: 10px auto;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+        }
+
+        .card img {
+            height: 200px;
+            object-fit: cover;
+        }
+
+        .category-cards {
+            display: flex;
+            justify-content: center;
+            flex-wrap: wrap;
+            gap: 20px;
+        }
+
+        @media (max-width: 768px) {
+            .category-cards {
+                flex-direction: column;
+                align-items: center;
+            }
+        }
+        .btn-group .dropdown-item a {
+        text-decoration: none;
+        color: inherit;
+    }
+
+    .btn-group .dropdown-item a:hover {
+        color: inherit;
+        /* Optional: Keeps hover effect consistent */
+    }
+
+    /* Remove blue underline from links, including buttons and "Women" heading */
+    a {
+        text-decoration: none !important;
+        color:inherit;
+        /* Inherit color from parent */
+    }
+
+    
+
+    .page-wrapper {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 100vh; /* Ensures the content is vertically centered */
+  background-color: #f9f9f9; /* Background color for the page */
+}
+
+.text-box-container {
+  width: 80%;
+  max-width: 800px;
+  background-color: rgba(255, 255, 255, 0.8);
+  border: 1px solid #ddd;
+  border-radius: 15px;
+  box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
+  padding: 20px;
+  text-align: left;
+  
+}
+
+.text-box-header {
+  font-size: 24px;
+  font-weight: bold;
+  color: #2d6a4f;
+  margin-bottom: 15px;
+  text-align: center;
+}
+
+.text-box-content {
+  font-size: 16px;
+  color: #555;
+  line-height: 1.6;
+  overflow-y: auto;
+  max-height: 400px;
+  background: transparent;
+}
+
+.text-box-content::-webkit-scrollbar {
+  width: 8px;
+}
+
+.text-box-content::-webkit-scrollbar-thumb {
+  background: #aaa;
+  border-radius: 10px;
+}
+
+.text-box-content::-webkit-scrollbar-track {
+  background: #f1f1f1;
+}
+
+.image-row {
+  display: flex;
+  justify-content: center; /* Centers the images horizontally */
+  align-items: center; /* Aligns the images vertically */
+  gap: 20px; /* Adds spacing between the images */
+  margin: 20px 0; /* Adds some vertical margin */
+  flex-wrap: wrap; /* Enables wrapping for smaller screens */
+}
+
+.image-item img {
+  width: 300px; /* Set desired width */
+  height: 200px; /* Set desired height */
+  object-fit: cover; /* Ensures the image fits without distortion */
+  border-radius: 10px; /* Optional: Rounded corners for images */
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); /* Optional: Adds a shadow */
+  transition: transform 0.3s ease, box-shadow 0.3s ease; /* Adds hover effects */
+}
+.site-footer{  background-color: #2d6a4f;
+    color: #fff;
+    padding: 40px 0;
+    font-family: Arial, sans-serif;
+}
+
+.site-footer h5 {
+    font-size: 18px;
+    font-weight: bold;
+    margin-bottom: 20px;
+}
+
+.site-footer p, .site-footer a {
+    color: #ddd;
+    font-size: 14px;
+}
+
+.site-footer a:hover {
+    color: #fff;
+    text-decoration: none;
+}
+
+.site-footer ul {
+    list-style: none;
+    padding: 0;
+}
+
+.site-footer ul li {
+    margin-bottom: 10px;
+}
+
+.social-media {
+    text-align: center;
+    margin-top: 20px;
+}
+
+.social-icon {
+    color: #fff;
+    font-size: 20px;
+    margin: 0 10px;
+    transition: color 0.3s ease;
+}
+
+.social-icon:hover {
+    color: #f1c40f;
+}
+
+    
+    </style>
+</head>
+
+<body>
+    <!-- Navbar -->
+    <nav class="navbar navbar-expand-lg">
+        <div class="container-fluid">
+            <a class="navbar-brand" href="homepage.html">National Park</a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarScroll"
+                aria-controls="navbarScroll" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse justify-content-center" id="navbarScroll">
+                <ul class="navbar-nav my-2 my-lg-0 navbar-nav-scroll">
+                    <li class="nav-item"><a class="nav-link" href="homepage.html">Home <i class="fa fa-tree"></i></a></li>
+                    
+                    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown">Parks</a>
+                        <ul class="dropdown-menu">
+                            <li><a class="dropdown-item" href="">Yellow Stone</a></li>
+                            <li><a class="dropdown-item" href="">Grand Canyon National Park</a></li>
+                            <li><a class="dropdown-item" href="">Serengeti National Park</a></li>
+                            <li><a class="dropdown-item" href="">Banff National Park</a></li>
+                            <li><a class="dropdown-item" href="">Masai Mara National Reserve</a></li>
+                            <li><a class="dropdown-item" href="">San Diego Zoo Safari Park</a></li>
+                            <li><a class="dropdown-item" href="">Ranthambore National Park</a></li>
+                            <li><a class="dropdown-item" href="">Taronga Zoo</a></li>
+                            <li><a class="dropdown-item" href="">Everglades National Park</a></li>
+                            <li><a class="dropdown-item" href="">Singapore Zoo</a></li>
+                        </ul>
+                    </li>
+                    
+                    <li class="nav-item"><a class="nav-link" href="">Park Finder <i class="fa fa-paw"></i> </a></li>
+                    <li class="nav-item"><a class="nav-link" href="">Interactive Park Map <i class="fa fa-map-marker-alt"></i> </a></li>
+                       
+                    
+                   
+                </ul>
+                <form class="d-flex">
+                    <input class="form-control me-2" type="search" placeholder="Search">
+                    <button class="btn btn-outline" type="submit">Search</button>
+                </form>
+                <span class="ms-3">
+                    <a href="form.html"><i class="fa-solid fa-user"></i></a>
+                </span>
+               
+            </div>
+        </div>
+    </nav>
+    <br>
+    <br>
+    <br>
+    
+
+
+
+
+
+
+
+
+<div class="Park-category">
+    <h2 style=" color: white;"><b><a href="">Taronga Zoo National Park</a></b></h2>
+    <div class="d-flex justify-content-center mb-4">
+        <button class="btn btn-dark"><a href="Taronga zoo project.html">Overview</a></button>
+        <button class="btn btn-dark"><a href="Taronga zoo animal.html"  class="nav-link">Animals</a></button>
+        <button class="btn btn-dark"><a href="Taronga zoo location.html" class="nav-link">Location</a></button>
+    </div>
+
+<center>
+    <div class="text-box-container">
+        <div class="text-box-header">Taronga Zoo National Park Information</div>
+        <div class="text-box-content">
+          <p>
+            <strong>Welcome to Taronga Zoo National Park</strong><br>
+            Taronga Zoo, located in Mosman on Sydney Harbour, Australia, is a renowned zoological park that opened on October 7, 1916. Covering approximately 28 hectares, it is home to over 5,000 animals across 350 species. 
+          </p>
+          <p>
+            <strong>A Glimpse into History</strong><br>
+            Taronga Zoo, located in Mosman, Sydney, Australia, opened on October 7, 1916. It was established by the Taronga Park Trust and was initially created as part of a larger plan to conserve wildlife. The zoo spans 28 hectares and is home to over 5,000 animals from 350 species. It has grown to become one of the most well-known zoos in the world, focusing on both animal conservation and environmental education. Over the years, it has expanded its facilities and exhibits, becoming a key player in global wildlife preservation efforts.
+
+
+
+
+
+
+
+          </p>
+          <p>
+            <strong>What Makes Taronga Zoo Special</strong><br>
+        Tarango Zoo boasts an array of attractions that captivate millions of visitors each year:
+            <ul>
+              <li><strong>Stunning Location:</strong> Situated on the edge of Sydney Harbour, it offers breathtaking views of the harbor and the Sydney Opera House, making it one of the most scenic zoos in the world. </li>
+              <li><strong>Conservation Efforts:</strong> The zoo plays a major role in global wildlife conservation, supporting over 50 wildlife conservation projects both in Australia and internationally.</li>
+              <li><strong>Diverse Wildlife:</strong> Taronga Zoo is home to over 5,000 animals from 350 species, including iconic Australian animals like kangaroos and koalas, as well as exotic species like tigers, elephants, and chimpanzees.</li>
+            </ul>
+          </p>
+          
+        </div>
+      </div>
+<br>
+<br>
+<br>
+      <div class="text-box-container">
+        <div class="text-box-header">Taronga Zoo National Park Facilities</div>
+        <div class="text-box-content">
+
+            <p>
+                <strong>Facilities</strong><br>
+                Tarango Zoo National Park offers a variety of facilities to enhance visitor experiences, including lodging, camping, visitor centers, and recreational activities.
+
+<br>
+<br><strong>Lodging:</strong> The park features nine lodging facilities with over 2,000 rooms. Notable accommodations include:
+              </p>
+              
+              <ul>
+                <li><strong>Animal Exhibits:</strong>The zoo features immersive, naturalistic habitats for over 5,000 animals across 350 species. Highlights include the Wild Australia section, African Safari, Asian Rainforest, and Seal Bay.
+
+                </li>
+                <li><strong>Wild Ropes Treetop Adventure:</strong> A unique aerial adventure course that lets visitors experience the zoo from the treetops, offering spectacular views of Sydney Harbour.</li>
+                <li><strong>Educational Programs and Experiences:</strong>The zoo provides a variety of educational programs, including guided tours, animal encounters, and school excursions. Programs focus on wildlife conservation, animal behavior, and environmental awareness. </li>
+              </ul>
+            </p>
+        </div>
+    </div>
+    <br>
+    <br>
+    <br>
+
+    <div class="text-box-container">
+        <div class="text-box-header"></div>
+        <div class="text-box-content">
+
+            <p>
+                <strong><b>Wildlife Retreat hotel:</b> </strong><br>
+                The Wildlife Retreat at Taronga Zoo in Sydney offers a unique eco-retreat experience with immersive animal encounters and stunning views of Sydney Harbour. The accommodation features thoughtfully designed rooms that blend seamlessly with the natural surroundings.
+</p>
+              
+
+</div>
+</div>
+
+
+
+  
+
+<div class="image-row">
+    <div class="image-item">
+      <img src="images/download (1).jpeg" alt="Image 1">
+    </div>
+    <div class="image-item">
+      <img src="images/2.jpeg" alt="image 2">
+    </div>
+    <div class="image-item">
+      <img src="images/3.jpeg" alt="Image 3">
+    </div>
+  </div>
+   
+  <div class="text-box-container">
+    <div class="text-box-header"></div>
+    <div class="text-box-content">
+
+        <p>
+            <strong>Wildlife Retreat hotel Exterior:</strong><br>
+             This historic hotel, built in 2020, offers a warm welcome to visitors year-round. <br>
+
+<br><strong> Natural Materials:</strong><br>
+<br>
+The use of timber, stone, and other natural materials helps the buildings blend into the surrounding environment. <br>
+
+<br><strong>Sustainable Design: </strong><br>
+<br>
+The retreat incorporates sustainable design principles, with green roofs, solar panels, and water-efficient landscaping. 
+<br>
+<br><strong> Panoramic Views: </strong><br>
+<br>
+The architecture is oriented to maximize views of Sydney Harbour, Taronga Zoo, and the lush sanctuary areas where native animals roam. 
+</p>
+          
+
+</div>
+</div>
+  <br>
+  <br>
+  <div class="text-box-container">
+    <div class="text-box-header"></div>
+    <div class="text-box-content">
+
+        <p>
+            <strong><b>2.</b> Cremorne Point Manor:</strong><br>
+            Cremorne Point Manor is a 4-star boutique hotel situated in a historic 19th-century federation-style building on Cremorne Road,
+
+</p>
+          
+
+</div>
+</div>
+
+<div class="image-row">
+    <div class="image-item">
+      <img src="images/11.jpeg" alt="Image 1">
+    </div>
+    <div class="image-item">
+      <img src="images/12.jpeg" alt="image 2">
+    </div>
+    <div class="image-item">
+      <img src="images/13.jpeg" alt="Image 3">
+    </div>
+  </div>
+  
+
+  <div class="text-box-container">
+    <div class="text-box-header"></div>
+    <div class="text-box-content">
+
+        <p>
+           <b>Cremorne Point Manor exterior:</b><br>
+           The exterior of Cremorne Point Manor offers a striking example of 19th-century Federation-style architecture, which includes several notable features
+          
+            
+  
+          <br> <b> Guest Room Interior: </b><br>
+          The guest room exterior of Cremorne Point Manor features large traditional windows offering views of lush gardens or Sydney Harbour. Some rooms have access to or overlook the manor’s verandah, adorned with classic railings. Guests may also have small balconies or patios for outdoor relaxation, all while surrounded by the manor's historic Federation-style architecture, including gabled roofs and decorative woodwork.
+          
+            
+          <br> <b>Lodge Dining Area:</b><br>
+          The dining area interior of Cremorne Point Manor features elegant, traditional décor with modern amenities. It offers a cozy, intimate atmosphere with soft lighting and views of the gardens or Sydney Harbour, providing a refined dining experience in a historic setting.
+
+
+
+
+
+
+
+
+           
+
+
+</p>
+</div>
+<br>
+<center><div class="text-box-container">
+    <div class="text-box-header"> Learn More About the name of Taronga zoo park
+    <div class="text-box-content">
+
+      <p><a href="Taronga Zoo Park.docx" download>Taronga zoo park Information</a></p>
+
+    </div>
+          </center>
+
+
+</div>
+</div>
+  <br>
+  <br>
+  
+
+   
+
+</center>
+<footer class="site-footer">
+    <div class="container">
+        <div class="row">
+            <!-- About Section -->
+            <div class="col-md-4">
+                <h5>About Us</h5>
+                <p>We are dedicated to bringing the wonders of national parks and wildlife to your fingertips. Our mission is to help you explore the beauty of nature and the incredible animals that inhabit these pristine environments.</p>
+            </div>
+
+            <!-- Quick Links Section -->
+            <div class="col-md-4">
+                <h5>Quick Links</h5>
+                <ul>
+                    <li><a href="#">Home</a></li>
+                    <li><a href="#">National Parks</a></li>
+                    <li><a href="#">Wildlife Information</a></li>
+                    <li><a href="#">Our Mission</a></li>
+                    <li><a href="#">Contact Us</a></li>
+                </ul>
+            </div>
+
+            <!-- Contact Section -->
+            <div class="col-md-4">
+                <h5>Contact Us</h5>
+                <p>Email: support@nationalparks.com</p>
+                <p>Phone: +1 (800) 123-4567</p>
+                <p>Address: 123 Wilderness Ave, Nature City, NC 56789</p>
+            </div>
+        </div>
+
+        <div class="row">
+            <!-- Social Media Section -->
+            <div class="col-12">
+                <div class="social-media">
+                    <a href="#" class="social-icon"><i class="fab fa-facebook-f"></i></a>
+                    <a href="#" class="social-icon"><i class="fab fa-twitter"></i></a>
+                    <a href="#" class="social-icon"><i class="fab fa-instagram"></i></a>
+                    <a href="#" class="social-icon"><i class="fab fa-youtube"></i></a>
+                </div>
+            </div>
+        </div>
+    </div>
+</footer> 
+</center>
+</body>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>"></script>
+<script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
+<script>
+    const swiper = new Swiper('.swiper', {
+        loop: true,
+        pagination: {
+            el: '.swiper-pagination',
+            clickable: true,
+        },
+        navigation: {
+            nextEl: '.swiper-button-next',
+            prevEl: '.swiper-button-prev',
+        },
+        autoplay: {
+            delay: 3000,
+            disableOnInteraction: false,
+        },
+    });
+</script>
+
+</html>  
+

@@ -1,0 +1,526 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>National Park</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css">
+    <link
+  rel="stylesheet"
+  href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css"
+/>
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+            height: 100vh;
+            background-image: url(img/back2.jpeg); /* Replace with your actual image path */
+            background-size: cover;
+            background-position: center;
+            background-attachment: fixed;
+            font-family: 'Times New Roman', Times, serif;
+        }
+
+        .navbar {
+            background-color: transparent !important;
+            font-size: 18px;
+            padding: 0.5rem 1rem;
+            position: absolute;
+            width: 100%;
+            z-index: 10;
+        }
+
+        .navbar a.nav-link {
+            color: white;
+            font-weight: bold;
+        }
+
+        .navbar a.nav-link:hover {
+            color: beige;
+            text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.5);
+            transition: 0.3s ease-in-out;
+        }
+
+        .navbar-brand {
+            font-size: 2rem;
+            font-weight: bold;
+            color: white!important;
+        }
+
+        .btn-outline {
+            box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.3);
+            border: none;
+            background-color: black;
+            color: white;
+        }
+
+        .btn-outline:hover {
+            background-color: rgb(180, 180, 90);
+            color: rgb(186, 222, 170);
+        }
+
+        .Park-category {
+            padding: 50px 0;
+            text-align: center;
+           
+            margin-top: 80px;
+        }
+
+        .Park-category .btn {
+            margin: 35px;
+        }
+
+        .card {
+            width: 18rem;
+            margin: 10px auto;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+        }
+
+        .card img {
+            height: 200px;
+            object-fit: cover;
+        }
+
+        .category-cards {
+            display: flex;
+            justify-content: center;
+            flex-wrap: wrap;
+            gap: 20px;
+        }
+
+        @media (max-width: 768px) {
+            .category-cards {
+                flex-direction: column;
+                align-items: center;
+            }
+        }
+        .btn-group .dropdown-item a {
+        text-decoration: none;
+        color: inherit;
+    }
+
+    .btn-group .dropdown-item a:hover {
+        color: inherit;
+        /* Optional: Keeps hover effect consistent */
+    }
+
+    /* Remove blue underline from links, including buttons and "Women" heading */
+    a {
+        text-decoration: none !important;
+        color:inherit;
+        /* Inherit color from parent */
+    }
+
+    
+
+    .page-wrapper {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 100vh; /* Ensures the content is vertically centered */
+  background-color: #f9f9f9; /* Background color for the page */
+}
+
+.text-box-container {
+  width: 80%;
+  max-width: 800px;
+  background-color: rgba(255, 255, 255, 0.8);
+  border: 1px solid #ddd;
+  border-radius: 15px;
+  box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
+  padding: 20px;
+  text-align: left;
+  
+}
+
+.text-box-header {
+  font-size: 24px;
+  font-weight: bold;
+  color: #2d6a4f;
+  margin-bottom: 15px;
+  text-align: center;
+}
+
+.text-box-content {
+  font-size: 16px;
+  color: #555;
+  line-height: 1.6;
+  overflow-y: auto;
+  max-height: 400px;
+  background: transparent;
+}
+
+.text-box-content::-webkit-scrollbar {
+  width: 8px;
+}
+
+.text-box-content::-webkit-scrollbar-thumb {
+  background: #aaa;
+  border-radius: 10px;
+}
+
+.text-box-content::-webkit-scrollbar-track {
+  background: #f1f1f1;
+}
+
+.image-row {
+  display: flex;
+  justify-content: center; /* Centers the images horizontally */
+  align-items: center; /* Aligns the images vertically */
+  gap: 20px; /* Adds spacing between the images */
+  margin: 20px 0; /* Adds some vertical margin */
+  flex-wrap: wrap; /* Enables wrapping for smaller screens */
+}
+
+.image-item img {
+  width: 300px; /* Set desired width */
+  height: 200px; /* Set desired height */
+  object-fit: cover; /* Ensures the image fits without distortion */
+  border-radius: 10px; /* Optional: Rounded corners for images */
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); /* Optional: Adds a shadow */
+  transition: transform 0.3s ease,box-shadow 0.3s ease,;/*add hover effect */
+}
+.site-footer {
+    background-color: #2d6a4f;
+    color: #fff;
+    padding: 40px 0;
+    font-family: Arial, sans-serif;
+}
+
+.site-footer h5 {
+    font-size: 18px;
+    font-weight: bold;
+    margin-bottom: 20px;
+}
+
+.site-footer p, .site-footer a {
+    color: #ddd;
+    font-size: 14px;
+}
+
+.site-footer a:hover {
+    color: #fff;
+    text-decoration: none;
+}
+
+.site-footer ul {
+    list-style: none;
+    padding: 0;
+}
+
+.site-footer ul li {
+    margin-bottom: 10px;
+}
+
+.social-media {
+    text-align: center;
+    margin-top: 20px;
+}
+
+.social-icon {
+    color: #fff;
+    font-size: 20px;
+    margin: 0 10px;
+    transition: color 0.3s ease;
+}
+
+.social-icon:hover {
+    color: #f1c40f;
+}
+
+
+    
+    </style>
+</head>
+
+<body>
+    <!-- Navbar -->
+    <nav class="navbar navbar-expand-lg">
+        <div class="container-fluid">
+            <a class="navbar-brand" href="homepage.html">National Park</a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarScroll"
+                aria-controls="navbarScroll" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse justify-content-center" id="navbarScroll">
+                <ul class="navbar-nav my-2 my-lg-0 navbar-nav-scroll">
+                    <li class="nav-item"><a class="nav-link" href="homepage.html">Home<i class="fa fa-tree"></i></a>
+                    
+                    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown">Parks</a>
+                        <ul class="dropdown-menu">
+                            <li><a class="dropdown-item" href="">Yellow Stone</a></li>
+                            <li><a class="dropdown-item" href="">Canyon National Park</a></li>
+                            <li><a class="dropdown-item" href="">Serengeti National Park</a></li>
+                            <li><a class="dropdown-item" href="">Banff National Park</a></li>
+                            <li><a class="dropdown-item" href="">Masai Mara National Reserve</a></li>
+                            <li><a class="dropdown-item" href="">San Diego Zoo Safari Park</a></li>
+                            <li><a class="dropdown-item" href="">Ranthambore National Park</a></li>
+                            <li><a class="dropdown-item" href="">Taronga Zoo</a></li>
+                            <li><a class="dropdown-item" href="">Everglades National Park</a></li>
+                            <li><a class="dropdown-item" href="">singapore zoo Park</a></li>
+                        </ul>
+                    </li>
+                    
+                    <li class="nav-item"><a class="nav-link" href="">Park Finder <i class="fa fa-paw"></i> </a></li>
+                    <li class="nav-item"><a class="nav-link" href="">Interactive Park Map <i class="fa fa-map-marker-alt"></i> </a></li>
+                                              
+                    
+                   
+                </ul>
+                <form class="d-flex">
+                    <input class="form-control me-2" type="search" placeholder="Search">
+                    <button class="btn btn-outline" type="submit">Search</button>
+                </form>
+                <span class="ms-3">
+                    <a href="form.html"><i class="fa-solid fa-user"></i></a>
+                </span>
+                <span class="ms-3">
+                    
+                </span>
+            </div>
+        </div>
+    </nav>
+    <br>
+    
+  
+<div class="Park-category">
+    <h2 style=" color: white;"><b><a href="">Everglades National Park</a></b></h2>
+    <div class="d-flex justify-content-center mb-4">
+        <button class="btn btn-dark"><a href="Everglade park index.html" target="_blank" class="nav-link">Overview</a></button>
+        <button class="btn btn-dark"><a href="Everglade park animals.html" target="_blank" class="nav-link">Animals</a></button>
+        <button class="btn btn-dark"><a href="Everglade park location.html" target="_blank" class="nav-link">Location</a></button>
+    </div>
+
+<center>
+    <div class="text-box-container">
+        <div class="text-box-header">Everglades National Park Information</div>
+        <div class="text-box-content">
+          <p>
+            <strong>Everglades National Park</strong><br>
+            Everglades National Park, located in southern Florida, is a sprawling and unique wetland ecosystem that holds global significance. Spanning over 1.5 million acres, the park is renowned for its rich biodiversity, distinctive landscape, and importance as a UNESCO World Heritage Site, a Wetland of International Importance, and an International Biosphere Reserve.
+          </p>
+          <p>
+            <strong>A Glimpse into History</strong><br>
+            The Everglades' history is rooted in its role as a vital ecosystem for indigenous tribes like the Calusa, Miccosukee, and Seminole, who lived in harmony with the wetlands. In the 19th and early 20th centuries, efforts to drain the Everglades for farming and urban development caused severe ecological damage. Conservation awareness grew in the 1930s, thanks to activists like Marjory Stoneman Douglas. In 1947, Everglades National Park was established to protect this unique subtropical wilderness. Today, it stands as a testament to the ongoing efforts to restore and preserve a globally significant ecosystem.
+
+          </p>
+          <p>
+            <strong>What Makes Everglades Park Special</strong><br>
+            Everglades Park boasts an array of attractions that captivate millions of visitors each year:
+            <ul>
+              <li><strong> Vast Wetland Ecosystem:</strong> Known as the "River of Grass", the Everglades is a slow-moving, shallow river dominated by sawgrass marshes./li>
+              <li><strong> Biodiversity Hotspot:</strong> Flora: Features diverse habitats, including mangroves, cypress domes, pinelands, and hardwood hammocks.</li>
+              <li><strong> Hydrological Importance:</strong>The Everglades is a critical part of Florida’s water system, as it filters water and provides fresh drinking water to millions of Floridians.</li>
+            </ul>
+          </p>
+          
+        </div>
+      </div>
+    </center>
+<br>
+<br>
+<br>
+<center>
+      <div class="text-box-container">
+        <div class="text-box-header">Everglades National Park Facilities</div>
+        <div class="text-box-content">
+
+            <p>
+                <strong>Facilities</strong><br>
+                Everglades National Park provides a range of facilities to enhance visitors' experience while promoting education and conservation. Here are the main facilities available:
+                <ul>
+                  <li><strong>  Visitor Centers:</strong>Ernest F. Coe Visitor Center: Located near Homestead, it serves as the main entrance, offering exhibits, maps, and information. </li>
+                  <li><strong> Trails and Boardwalks:</strong>Well-maintained trails like the Anhinga Trail, Gumbo Limbo Trail, and Pinelands Trail allow visitors to explore the park on foot. </li>
+                  <li><strong>Lodging:</strong> The park features nine lodging facilities with over 2,000 rooms. Notable accommodations include:
+                  </li>
+                </ul>
+              </p>
+              
+            </div>
+          </div>
+        </center>
+
+
+
+
+
+
+<br>
+<br>
+             
+              
+
+        </div>
+    </div>
+    <br>
+    <br>
+    <br>
+<center>
+    <div class="text-box-container">
+        <div class="text-box-header"></div>
+        <div class="text-box-content">
+
+            <p>
+                <strong><b>1.</b>  Flamingo Lodge & Restaurant</strong><br>
+                Flamingo Lodge is located within Everglades National Park, near the Flamingo Visitor Center. It offers rustic accommodations, including lodge rooms and cabins, providing a comfortable base for exploring the park's unique ecosystem.
+
+</p>
+              
+
+</div>
+</div>
+<br>
+
+
+
+  
+
+<div class="image-row">
+    <div class="image-item">
+      <img src="img/download.jpeg" alt="Image 1">
+    </div>
+    <div class="image-item">
+      <img src="img/1.avif" alt="Image 2">
+    </div>
+    <div class="image-item">
+      <img src="img/2.jpg" alt="Image 3">
+    </div>
+  </div>
+   
+  <div class="text-box-container">
+    <div class="text-box-header"></div>
+    <div class="text-box-content">
+<br>
+        <p>
+            <strong> Flamingo lodge hotel Exterior:</strong><br>
+             This historic hotel built in 1959 , offers a warm welcome to visitors year-round. <br>
+
+<br><strong> Wooden and stucco construction:</strong><br>
+<br>
+often in neutral tones like beige, brown, or light green, allowing it to blend in with the surrounding mangrove forests and wetlands.
+ <br>
+
+<br><strong> Large windows:</strong><br>
+<br>
+to provide panoramic views of Florida Bay and the Everglades, allowing guests to enjoy the natural beauty of the area.
+<br>
+<br><strong> Covered porches and patios</strong><br>
+<br>
+with outdoor seating areas, designed to give guests a chance to relax and experience the outdoors.
+</p>
+          
+
+</div>
+</div> 
+<br>
+<br>
+<br>
+<div class="text-box-container">
+    <div class="text-box-header"> Learn More About the name of Everglades park
+    <div class="text-box-content">
+
+      <p><a href="Everglade National PARK.docx" download>Everglades park Information</a></p>
+
+    </div>
+  </div>  
+</center>
+ 
+
+  
+           
+
+
+
+  <br>
+  <br>
+  <br>
+
+
+  
+
+  <footer class="site-footer">
+    <div class="container">
+        <div class="row">
+            <!-- About Section -->
+            <div class="col-md-4">
+                <h5>About Us</h5>
+                <p>We are dedicated to bringing the wonders of national parks and wildlife to your fingertips. Our mission is to help you explore the beauty of nature and the incredible animals that inhabit these pristine environments.</p>
+            </div>
+
+            <!-- Quick Links Section -->
+            <div class="col-md-4">
+                <h5>Quick Links</h5>
+                <ul>
+                    <li><a href="#">Home</a></li>
+                    <li><a href="#">National Parks</a></li>
+                    <li><a href="#">Wildlife Information</a></li>
+                    <li><a href="#">Our Mission</a></li>
+                    <li><a href="#">Contact Us</a></li>
+                </ul>
+            </div>
+
+            <!-- Contact Section -->
+            <div class="col-md-4">
+                <h5>Contact Us</h5>
+                <p>Email: support@nationalparks.com</p>
+                <p>Phone: +1 (800) 123-4567</p>
+                <p>Address: 123 Wilderness Ave, Nature City, NC 56789</p>
+            </div>
+        </div>
+
+        <div class="row">
+            <!-- Social Media Section -->
+            <div class="col-12">
+                <div class="social-media">
+                    <a href="#" class="social-icon"><i class="fab fa-facebook-f"></i></a>
+                    <a href="#" class="social-icon"><i class="fab fa-twitter"></i></a>
+                    <a href="#" class="social-icon"><i class="fab fa-instagram"></i></a>
+                    <a href="#" class="social-icon"><i class="fab fa-youtube"></i></a>
+                </div>
+            </div>
+        </div>
+    </div>
+</footer>    
+                        
+   
+
+
+
+
+
+   
+ 
+
+
+
+
+
+
+           
+    
+</body>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>"></script>
+<script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
+<script>
+    const swiper = new Swiper('.swiper', {
+        loop: true,
+        pagination: {
+            el: '.swiper-pagination',
+            clickable: true,
+        },
+        navigation: {
+            nextEl: '.swiper-button-next',
+            prevEl: '.swiper-button-prev',
+        },
+        autoplay: {
+            delay: 3000,
+            disableOnInteraction: false,
+        },
+    });
+</script>
+
+</html>
