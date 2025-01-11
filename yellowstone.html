@@ -1,0 +1,553 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Yellowstone National Park</title>
+    <link rel="stylesheet" href="css/bootstrap.css">
+    <link rel="stylesheet" href="js/bootstrap.bundle.js">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css">
+    <link rel="stylesheet" href="css/bootstrap.css"/>
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+            height: 100vh;
+            background-image: url(images/bg.avif); /* Replace with your actual image path */
+            background-size: cover;
+            background-position: center;
+            background-attachment: fixed;
+            font-family: 'Times New Roman', Times, serif;
+        }
+
+        .navbar {
+            background-color: transparent !important;
+            font-size: 18px;
+            padding: 0.5rem 1rem;
+            position: absolute;
+            width: 100%;
+            z-index: 10;
+        }
+
+        .navbar a.nav-link {
+            color: white;
+            font-weight: bold;
+        }
+
+        .navbar a.nav-link:hover {
+            color: beige;
+            text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.5);
+            transition: 0.3s ease-in-out;
+        }
+
+        .navbar-brand {
+            font-size: 2rem;
+            font-weight: bold;
+            color: white!important;
+        }
+
+        .btn-outline {
+            box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.3);
+            border: none;
+            background-color: black;
+            color: white;
+        }
+
+        .btn-outline:hover {
+            background-color: rgb(180, 180, 90);
+            color: rgb(186, 222, 170);
+        }
+
+        .Park-category {
+            padding: 50px 0;
+            text-align: center;
+            padding-bottom: 0;
+            margin-top: 80px;
+        }
+
+        .Park-category .btn {
+            margin: 35px;
+        }
+
+        .card {
+            width: 18rem;
+            margin: 10px auto;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+        }
+
+        .card img {
+            height: 200px;
+            object-fit: cover;
+        }
+
+        .category-cards {
+            display: flex;
+            justify-content: center;
+            flex-wrap: wrap;
+            gap: 20px;
+        }
+
+        @media (max-width: 768px) {
+            .category-cards {
+                flex-direction: column;
+                align-items: center;
+            }
+        }
+        .btn-group .dropdown-item a {
+        text-decoration: none;
+        color: inherit;
+    }
+
+    .btn-group .dropdown-item a:hover {
+        color: inherit;
+        /* Optional: Keeps hover effect consistent */
+    }
+
+    /* Remove blue underline from links, including buttons and "Women" heading */
+    a {
+        text-decoration: none !important;
+        color:inherit;
+        /* Inherit color from parent */
+    }
+
+    
+
+    .page-wrapper {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 100vh; /* Ensures the content is vertically centered */
+  background-color: #f9f9f9; /* Background color for the page */
+  flex-wrap: wrap;
+}
+
+.text-box-container {
+  width: 80%;
+  max-width: 800px;
+  background-color: rgba(255, 255, 255, 0.8);
+  border: 1px solid #ddd;
+  border-radius: 15px;
+  box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
+  padding: 20px;
+  text-align: left;
+  
+}
+
+.text-box-header {
+  font-size: 24px;
+  font-weight: bold;
+  color: #2d6a4f;
+  margin-bottom: 15px;
+  text-align: center;
+}
+
+.text-box-content {
+  font-size: 16px;
+  color: #555;
+  line-height: 1.6;
+  overflow-y: auto;
+  max-height: 400px;
+  background: transparent;
+}
+
+.text-box-content::-webkit-scrollbar {
+  width: 8px;
+}
+
+.text-box-content::-webkit-scrollbar-thumb {
+  background: #aaa;
+  border-radius: 10px;
+}
+
+.text-box-content::-webkit-scrollbar-track {
+  background: #f1f1f1;
+}
+
+.image-row {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center; /* Centers the images horizontally */
+  align-items: center; /* Aligns the images vertically */
+  gap: 20px; /* Adds spacing between the images */
+  margin: 20px 0; /* Adds some vertical margin */
+}
+
+.image-item img {
+  width: 300px; /* Set desired width */
+  height: 200px; /* Set desired height */
+  object-fit: cover; /* Ensures the image fits without distortion */
+  border-radius: 10px; /* Optional: Rounded corners for images */
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); /* Optional: Adds a shadow */
+}
+.site-footer{
+background-color: #2d6a4f;
+    color: #fff;
+    padding: 40px 0;
+    font-family: Arial, sans-serif;
+}
+
+.site-footer h5 {
+    font-size: 18px;
+    font-weight: bold;
+    margin-bottom: 20px;
+}
+
+.site-footer p, .site-footer a {
+    color: #ddd;
+    font-size: 14px;
+}
+
+.site-footer a:hover {
+    color: #fff;
+    text-decoration: none;
+}
+
+.site-footer ul {
+    list-style: none;
+    padding: 0;
+}
+
+.site-footer ul li {
+    margin-bottom: 10px;
+}
+
+.social-media {
+    text-align: center;
+    margin-top: 20px;
+}
+
+.social-icon {
+    color: #fff;
+    font-size: 20px;
+    margin: 0 10px;
+    transition: color 0.3s ease;
+}
+
+.social-icon:hover {
+    color: #f1c40f;
+}
+
+
+    
+    </style>
+</head>
+
+<body>
+    <!-- Navbar -->
+    <nav class="navbar navbar-expand-lg">
+        <div class="container-fluid">
+            <a class="navbar-brand" href="homepage.html">National Park</a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarScroll"
+                aria-controls="navbarScroll" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse justify-content-center" id="navbarScroll">
+                <ul class="navbar-nav my-2 my-lg-0 navbar-nav-scroll">
+                    <li class="nav-item"><a class="nav-link" href="homepage.html">Home <i class="fa fa-tree">
+                    </i></a></li>
+                    
+                    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown">Parks</a>
+                        <ul class="dropdown-menu">
+                            <li><a class="dropdown-item" href="yellowstone.html">Yellow Stone</a></li>
+                            <li><a class="dropdown-item" href="">Grand Canyon National Park</a></li>
+                            <li><a class="dropdown-item" href="Serengeti.html">Serengeti National Park</a></li>
+                            <li><a class="dropdown-item" href="">Banff National Park</a></li>
+                            <li><a class="dropdown-item" href="">Masai Mara National Reserve</a></li>
+                            <li><a class="dropdown-item" href="">San Diego Zoo Safari Park</a></li>
+                            <li><a class="dropdown-item" href="">Ranthambore National Park</a></li>
+                            <li><a class="dropdown-item" href="">Taronga Zoo </a></li>
+                            <li><a class="dropdown-item" href="">Everglades National Park</a></li>
+                            <li><a class="dropdown-item" href="">Singapore Zoo</a></li>
+                        </ul>
+                    </li>
+                    
+                    <li class="nav-item"><a class="nav-link" href="">Park Finder <i class="fa fa-paw">
+ </i></a></li>
+                    <li class="nav-item"><a class="nav-link" href="">Interactive Park Map <i class="fa fa-map-marker-alt">
+                    </i></a></li>
+                       
+                    
+                   
+                </ul>
+                <form class="d-flex">
+                    <input class="form-control me-2" type="search" placeholder="Search">
+                    <button class="btn btn-outline" type="submit">Search</button>
+                </form>
+                <span class="ms-3">
+                    <a href="form.html"><i class="fa-solid fa-user"></i></a>
+                </span>
+                <!-- <span class="ms-3">
+                    <a href="form.html"><i class="fas fa-shopping-bag"></i></a>
+                </span> -->
+            </div>
+        </div>
+    </nav>
+    <br>
+    <br>
+    <br>
+    
+
+
+
+
+
+
+
+
+<div class="Park-category">
+    <h2 style=" color: white;"><b><a href="">Yellowstone National Park</a></b></h2>
+    <div class="d-flex justify-content-center mb-4">
+        <button class="btn btn-dark"><a href="yellowstone.html">Overview</a></button>
+        <button class="btn btn-dark"><a href="yellowstoneanimal.html">Animals</a></button>
+        <button class="btn btn-dark"><a href="yellowstonelocation.html">Location</a></button>
+    </div>
+
+<center>
+    <div class="text-box-container">
+        <div class="text-box-header">Yellowstone National Park Information</div>
+        <div class="text-box-content">
+          <p>
+            <strong>Welcome to Yellowstone National Park</strong><br>
+            Yellowstone National Park, the world's first national park, is a treasure trove of natural beauty and ecological wonders. Nestled across the states of Wyoming, Montana, and Idaho, Yellowstone offers visitors a unique blend of geothermal marvels, stunning landscapes, and diverse wildlife. Whether you’re an adventurer, a nature enthusiast, or a family on vacation, Yellowstone promises an unforgettable experience.
+          </p>
+          <p>
+            <strong>A Glimpse into History</strong><br>
+            Established in 1872, Yellowstone became the first national park in the world to protect its exceptional geothermal features and unparalleled ecosystems. Its history is deeply rooted in Native American heritage, with various tribes considering the area sacred. Over time, it has become a symbol of global conservation efforts, inspiring the creation of national parks worldwide.
+          </p>
+          <p>
+            <strong>What Makes Yellowstone Special</strong><br>
+            Yellowstone boasts an array of attractions that captivate millions of visitors each year:
+            <ul>
+              <li><strong>Geothermal Wonders:</strong> Witness the mesmerizing eruptions of Old Faithful and explore colorful hot springs like the Grand Prismatic Spring.</li>
+              <li><strong>Abundant Wildlife:</strong> The park is home to grizzly bears, wolves, bison, elk, and over 200 species of birds, making it a wildlife enthusiast’s paradise.</li>
+              <li><strong>Breathtaking Landscapes:</strong> From the serene Yellowstone Lake to the dramatic Grand Canyon of the Yellowstone, the park offers endless vistas to admire.</li>
+            </ul>
+          </p>
+          
+        </div>
+      </div>
+<br>
+<br>
+<br>
+      <div class="text-box-container">
+        <div class="text-box-header">Yellowstone National Park Facilities</div>
+        <div class="text-box-content">
+
+            <p>
+                <strong>Facilities</strong><br>
+                <!-- Yellowstone National Park offers a variety of facilities to enhance visitor experiences, including lodging, camping, visitor centers, and recreational activities. -->
+                Yellowstone National Park offers a wide range of facilities to enhance visitors' experiences. These include visitor centers with educational exhibits, 12 campgrounds, and various lodging options from rustic cabins to modern lodges. Dining services range from restaurants to snack bars, and general stores provide supplies and souvenirs. Outdoor enthusiasts can explore over 900 miles of trails, enjoy fishing and boating, or participate in ranger-led programs. The park ensures accessibility with shuttles, accessible facilities, and medical services for emergencies. Additionally, recycling stations and sustainability initiatives promote eco-friendly practices throughout the park.
+<br>
+<br><strong>Lodging:</strong> The park features nine lodging facilities with over 2,000 rooms. Notable accommodations include:
+              </p>
+              
+
+        </div>
+    </div>
+    <br>
+    <br>
+    <br>
+
+    <div class="text-box-container">
+        <div class="text-box-header"></div>
+        <div class="text-box-content">
+
+            <p>
+                <strong><b>1.</b> Visitor Centers and Museums</strong><br>
+    <!-- Mammoth Hot Springs Hotel and Cabins: Located near the north entrance, this historic hotel, built between 1936 and 1938, is named after the nearby limestone terraces.
+</p> -->
+         </p>
+         <li>Multiple visitor centers provide maps, exhibits, and ranger assistance.</li>     
+         <li>Educational museums focus on geology, wildlife, and history.</li>
+
+</div>
+</div>
+
+
+
+  
+
+<div class="image-row">
+    <div class="image-item">
+      <img src="yellowstone images/yellowstone.m" alt="Image 1">
+    </div>
+    <div class="image-item">
+      <img src="yellowstone images/yellow stone.mc.jpg" alt="Image 2">
+    </div>
+    <div class="image-item">
+      <img src="yellowstone images/yellow stone 1.jpg" alt="Image 3">
+    </div>
+  </div>
+   
+  <div class="text-box-container">
+    <div class="text-box-header"></div>
+    <div class="text-box-content">
+
+        <p>
+            <strong> Educational Exhibits:</strong>
+ <li>Interactive displays and models showcasing Yellowstone's geothermal features, wildlife, and cultural history.</li>
+<li>Multimedia presentations, including videos about the park’s geology, ecology, and conservation efforts.</li><br>
+<br><strong> Information and Assistance:</strong>
+<p>Staffed desks providing maps, brochures, and activity recommendations, Rangers available for answering questions and offering safety advice</p> <br>
+<!-- <li>Interactive models, videos, and educational boards engage visitors of all ages.</li> -->
+<!-- <br>Interactive models, videos, and educational boards engage visitors of all ages. -->
+ <!-- These cozy cabins provide a rustic lodging experience near the main hotel.  <br> -->
+
+<br><strong> Theaters and Presentations:</strong>
+<br>
+<li>Short educational films about park highlights, such as geysers, wildlife, and the Yellowstone ecosystem..</li>
+<li>Scheduled ranger-led talks and presentations.</li>
+<br>
+<br><strong>Gift Shops and Bookstores:</strong>
+<li>Shops offering souvenirs, books, and educational materials about the park.</li>
+<li>A variety of items ranging from apparel to wildlife-themed gifts.</li>
+          
+
+</div>
+</div>
+  <br>
+  <br>
+
+  <div class="text-box-container">
+    <div class="text-box-header"></div>
+    <div class="text-box-content">
+
+        <p>
+            <strong><b>2.</b>Camping and Lodging:</strong><br>
+            <li>12 campgrounds with both reservable and first-come, first-served options.</li>
+            <li>Lodges and cabins available for booking, ranging from rustic to modern.</li>
+</p>
+          
+
+</div>
+</div>
+
+<div class="image-row">
+    <div class="image-item">
+      <img src="yellowstone images/yellowstone.mounat.jpg" alt="Image 4">
+    </div>
+    <div class="image-item">
+      <img src="yellowstone images/yellowstone 1.jpg" alt="Image 5">
+    </div>
+    <div class="image-item">
+      <img src="yellowstone images/yellowstone 2.jpg" alt="Image 6">
+    </div>
+  </div>
+
+  <div class="text-box-container">
+    <div class="text-box-header"></div>
+    <div class="text-box-content">
+
+        <p>
+           <b>Campgrounds:</b>
+             <li>Reservable Campgrounds: Several campgrounds, such as Madison and Canyon, offer advanced reservations.</li>
+             <li>First-Come, First-Served Campgrounds: Options like Mammoth Campground provide flexibility for spontaneous trips.</li>
+          
+            
+           <br><b>Backcountry Camping:</b>
+            <li>Over 300 backcountry campsites accessible through permits.</li>
+            <li>Basic facilities with a focus on a wilderness experience, including food storage systems to deter wildlife.</li>
+            
+            
+          <br> <b> Lodges and Cabins: </b>
+          <li>Historic Lodges: Options like the Old Faithful Inn provide rustic charm and modern amenities.</li> 
+          <li>Modern Accommodations: Canyon Lodge offers updated rooms and eco-friendly designs</li>
+          <li>Cabins: Varieties range from basic to fully equipped, catering to different comfort levels.</li>
+          
+            
+          <br> <b>Accessibility Features:</b>
+            Accessible restrooms and pathways in many camping and lodging areas.
+
+
+
+           
+
+
+</p>
+          
+
+</div>
+</div>
+  <br>
+  <br>
+
+
+
+
+<!-- ADDING WORD DOC -->
+  <div class="text-box-container">
+    <div class="text-box-header">Download The Park Information Here</div>
+    <div class="text-box-content">
+      <center><p><a href="Short History Of Yellowstone National Park.pdf" target="_blank">Yellowstone National Park Information</a>
+      </p></center>
+      
+
+
+    </div>
+  </div>
+  <br>
+  <br>
+  <br>
+
+
+
+
+  <!-- ADDING FOOTER -->
+  <footer class="site-footer">
+    <div class="container">
+        <div class="row">
+            <!-- About Section -->
+            <div class="col-md-4">
+                <h5>About Us</h5>
+                <p>We are dedicated to bringing the wonders of national parks and wildlife to your fingertips. Our mission is to help you explore the beauty of nature and the incredible animals that inhabit these pristine environments.</p>
+            </div>
+
+            <!-- Quick Links Section -->
+            <div class="col-md-4">
+                <h5>Quick Links</h5>
+                <ul>
+                    <li><a href="#">Home</a></li>
+                    <li><a href="#">National Parks</a></li>
+                    <li><a href="#">Wildlife Information</a></li>
+                    <li><a href="#">Our Mission</a></li>
+                    <li><a href="#">Contact Us</a></li>
+                </ul>
+            </div>
+
+            <!-- Contact Section -->
+            <div class="col-md-4">
+                <h5>Contact Us</h5>
+                <p>Email: support@nationalparks.com</p>
+                <p>Phone: +1 (800) 123-4567</p>
+                <p>Address: 123 Wilderness Ave, Nature City, NC 56789</p>
+            </div>
+        </div>
+
+        <div class="row">
+            <!-- Social Media Section -->
+            <div class="col-12">
+                <div class="social-media">
+                    <a href="#" class="social-icon"><i class="fab fa-facebook-f"></i></a>
+                    <a href="#" class="social-icon"><i class="fab fa-twitter"></i></a>
+                    <a href="#" class="social-icon"><i class="fab fa-instagram"></i></a>
+                    <a href="#" class="social-icon"><i class="fab fa-youtube"></i></a>
+                </div>
+            </div>
+        </div>
+    </div>
+</footer>                                                                                     
+
+</center>
+
+
+
+   
+</body>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
+<script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
+
+
+</html>

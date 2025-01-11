@@ -1,0 +1,569 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Serengeti National Park</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css">
+    <link
+  
+/>
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+            height: 100vh;
+            background-image: url(images/Serengeti-Simba-Lodge.jpg); /* Replace with your actual image path */
+            background-size: cover;
+            background-position: center;
+            background-attachment: fixed;
+            font-family: 'Times New Roman', Times, serif;
+        }
+
+        .navbar {
+            background-color: transparent !important;
+            font-size: 18px;
+            padding: 0.5rem 1rem;
+            position: absolute;
+            width: 100%;
+            z-index: 10;
+        }
+
+        .navbar a.nav-link {
+            color: white;
+            font-weight: bold;
+        }
+
+        .navbar a.nav-link:hover {
+            color: beige;
+            text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.5);
+            transition: 0.3s ease-in-out;
+        }
+
+        .navbar-brand {
+            font-size: 2rem;
+            font-weight: bold;
+            color: white!important;
+        }
+
+        .btn-outline {
+            box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.3);
+            border: none;
+            background-color: black;
+            color: white;
+        }
+
+        .btn-outline:hover {
+            background-color: rgb(180, 180, 90);
+            color: rgb(186, 222, 170);
+        }
+
+        .Park-category {
+            padding: 50px 0;
+            text-align: center;
+           padding-bottom: 0;
+            margin-top: 80px;
+        }
+
+        .Park-category .btn {
+            margin: 35px;
+        }
+
+        .card {
+            width: 18rem;
+            margin: 10px auto;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+        }
+
+        .card img {
+            height: 200px;
+            object-fit: cover;
+        }
+
+        .category-cards {
+            display: flex;
+            justify-content: center;
+            flex-wrap: wrap;
+            gap: 20px;
+        }
+
+        @media (max-width: 768px) {
+            .category-cards {
+                flex-direction: column;
+                align-items: center;
+            }
+        }
+        .btn-group .dropdown-item a {
+        text-decoration: none;
+        color: inherit;
+    }
+
+    .btn-group .dropdown-item a:hover {
+        color: inherit;
+        /* Optional: Keeps hover effect consistent */
+    }
+
+    /* Remove blue underline from links, including buttons and "Women" heading */
+    a {
+        text-decoration: none !important;
+        color:inherit;
+        /* Inherit color from parent */
+    }
+
+    
+
+    .page-wrapper {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 100vh; /* Ensures the content is vertically centered */
+  background-color: #f9f9f9; /* Background color for the page */
+}
+
+.text-box-container {
+  width: 80%;
+  max-width: 800px;
+  background-color: rgba(255, 255, 255, 0.8);
+  border: 1px solid #ddd;
+  border-radius: 15px;
+  box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
+  padding: 20px;
+  text-align: left;
+  
+}
+
+.text-box-header {
+  font-size: 24px;
+  font-weight: bold;
+  color: #2d6a4f;
+  margin-bottom: 15px;
+  text-align: center;
+}
+
+.text-box-content {
+  font-size: 16px;
+  color: #555;
+  line-height: 1.6;
+  overflow-y: auto;
+  max-height: 400px;
+  background: transparent;
+}
+
+.text-box-content::-webkit-scrollbar {
+  width: 8px;
+}
+
+.text-box-content::-webkit-scrollbar-thumb {
+  background: #aaa;
+  border-radius: 10px;
+}
+
+.text-box-content::-webkit-scrollbar-track {
+  background: #f1f1f1;
+}
+
+.image-row {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center; /* Centers the images horizontally */
+  align-items: center; /* Aligns the images vertically */
+  gap: 20px; /* Adds spacing between the images */
+  margin: 20px 0; /* Adds some vertical margin */
+  flex-wrap: wrap;
+}
+
+.image-item img {
+  width: 300px; /* Set desired width */
+  height: 200px; /* Set desired height */
+  object-fit: cover; /* Ensures the image fits without distortion */
+  border-radius: 10px; /* Optional: Rounded corners for images */
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); /* Optional: Adds a shadow */
+}
+
+.site-footer{
+background-color: #2d6a4f;
+    color: #fff;
+    padding: 40px 0;
+    font-family: Arial, sans-serif;
+}
+
+.site-footer h5 {
+    font-size: 18px;
+    font-weight: bold;
+    margin-bottom: 20px;
+}
+
+.site-footer p, .site-footer a {
+    color: #ddd;
+    font-size: 14px;
+}
+
+.site-footer a:hover {
+    color: #fff;
+    text-decoration: none;
+}
+
+.site-footer ul {
+    list-style: none;
+    padding: 0;
+}
+
+.site-footer ul li {
+    margin-bottom: 10px;
+}
+
+.social-media {
+    text-align: center;
+    margin-top: 20px;
+}
+
+.social-icon {
+    color: #fff;
+    font-size: 20px;
+    margin: 0 10px;
+    transition: color 0.3s ease;
+}
+
+.social-icon:hover {
+    color: #f1c40f;
+}
+
+    
+    </style>
+</head>
+
+<body>
+    <!-- Navbar -->
+    <nav class="navbar navbar-expand-lg">
+        <div class="container-fluid">
+            <a class="navbar-brand" href="homepage.html">National Park</a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarScroll"
+                aria-controls="navbarScroll" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse justify-content-center" id="navbarScroll">
+                <ul class="navbar-nav my-2 my-lg-0 navbar-nav-scroll">
+                    <li class="nav-item"><a class="nav-link" href="homepage.html">Home <i class="fa fa-tree">
+
+                    </i></a></li>
+                    
+                    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown">Parks</a>
+                        <ul class="dropdown-menu">
+                            <li><a class="dropdown-item" href="yellowstone.html">Yellow Stone</a></li>
+                            <li><a class="dropdown-item" href="">Grand Canyon National Park</a></li>
+                            <li><a class="dropdown-item" href="Serengeti.html">Serengeti National Park</a></li>
+                            <li><a class="dropdown-item" href="">Banff National Park</a></li>
+                            <li><a class="dropdown-item" href="">Masai Mara National Reserve</a></li>
+                            <li><a class="dropdown-item" href="">San Diego Zoo Safari Park</a></li>
+                            <li><a class="dropdown-item" href="">Ranthambore National Park</a></li>
+                            <li><a class="dropdown-item" href="">Taronga Zoo</a></li>
+                            <li><a class="dropdown-item" href="">Everglades National Park</a></li>
+                            <li><a class="dropdown-item" href="">Singapore Zoo</a></li>
+                        </ul>
+                    </li>
+                    
+                    <li class="nav-item"><a class="nav-link" href="">Park Finder <i class="fa fa-paw">
+                    </i></a></li>
+                    <li class="nav-item"><a class="nav-link" href="">Interactive Park Map <i class="fa fa-map-marker-alt">
+ </i></a></li>
+                       
+                    
+                   
+                </ul>
+                <form class="d-flex">
+                    <input class="form-control me-2" type="search" placeholder="Search">
+                    <button class="btn btn-outline" type="submit">Search</button>
+                </form>
+                <span class="ms-3">
+                    <a href="form.html"><i class="fa-solid fa-user"></i></a>
+                </span>
+                <!-- <span class="ms-3">
+                    <a href="form.html"><i class="fas fa-shopping-bag"></i></a>
+                </span> -->
+            </div>
+        </div>
+    </nav>
+    <br>
+    <br>
+    <br>
+    
+
+
+
+
+
+
+
+
+<div class="Park-category">
+    <h2 style=" color: white;"><b><a href="">Serengeti National Park</a></b></h2>
+    <div class="d-flex justify-content-center mb-4">
+        <button class="btn btn-dark"><a href="Serengeti.html">Overview</a></button>
+        <button class="btn btn-dark"><a href="serengetianimals.html">Animals</a></button>
+        <button class="btn btn-dark"><a href="Serengetiloc.html">Location</a></button>
+    </div>
+
+<center>
+    <div class="text-box-container">
+        <div class="text-box-header">Serengeti National Park Information</div>
+        <div class="text-box-content">
+          <p>
+            <strong>Welcome to Serengeti National Park</strong><br>
+            Serengeti National Park is one of the most famous wildlife reserves in the world, located in northern Tanzania.
+          </p>
+          <p>
+            <strong>A Glimpse into History</strong><br>
+            Serengeti National Park was established in 1951 by the British colonial government as a game reserve, primarily to protect its wildlife from hunting. The park’s name "Serengeti" comes from the Maasai word "Siringet", meaning "endless plains," which reflects its vast landscape.
+
+Before becoming a national park, the region was home to the Maasai people, who lived in harmony with the land for centuries. 
+          </p>
+          <p>
+            <strong>What Makes Serengeti National Park Special</strong><br>
+            Serengeti National Park is special for its iconic **Great Migration**, where millions of wildebeest and other animals move across its vast plains. It is home to a rich variety of wildlife, including the "Big Five," and offers breathtaking landscapes, from endless savannas to lush river valleys. As a UNESCO World Heritage Site, Serengeti is a hub for wildlife conservation and offers one of the world's best safari experiences, making it a must-visit destination for nature lovers and adventurers.
+            <!-- <ul>
+              <li><strong>The Great Migration:</strong> Every year, millions of wildebeest, zebras, and gazelles migrate across the plains in search of fresh grazing. This natural spectacle is one of the most incredible wildlife events on Earth.              </li>
+              <li><strong>Biodiversity:</strong>  Serengeti is home to a wide variety of species, including the "Big Five" (lions, elephants, leopards, buffaloes, and rhinos), cheetahs, giraffes, hippos, and over 500 species of birds.</li>
+              <li><strong>Endless Plains:</strong> The vast, open savannas of Serengeti, stretching as far as the eye can see, create an iconic landscape that is both dramatic and serene.</li>
+              <li><strong>World-Class Safari Destination:</strong>  Serengeti offers some of the best safari experiences in the world, with a mix of game drives, walking safaris, and hot air balloon rides.</li>
+              <li><strong>Conservation Efforts:</strong> Serengeti is a focal point for global conservation initiatives, ensuring that its wildlife, migration routes, and ecosystems are protected for future generations.</li>
+            </ul> -->
+          </p>
+          
+        </div>
+      </div>
+<br>
+<br>
+<br>
+      <div class="text-box-container">
+        <div class="text-box-header">Serengeti National Park Facilities</div>
+        <div class="text-box-content">
+
+            <p>
+                <strong>Accommodation:</strong><br>
+                <li>High-end lodges like Four Seasons Safari Lodge and Serengeti Serena Safari Lodge offer premium stays with stunning views and excellent services.</li>
+                <li>For a more immersive safari experience, mobile camps and permanent luxury tented camps (e.g., Serengeti Migration Camp) provide a combination of comfort and adventure.</li>
+                <li> For budget-conscious travelers, the park offers several public campsites where visitors can enjoy a more rustic experience.</li>
+<br>
+<br><strong>Health and Safety:</strong> <br>
+<li>There are trained rangers and park staff to ensure visitor safety, both in the wilderness and at lodges or camps.</li>
+<li>Basic first aid and emergency services are available in the park.</li>
+<br><strong>Wi-Fi and Communication:</strong><br>
+<li>Some of the luxury lodges and camps provide Wi-Fi and communication facilities, though coverage can be limited in more remote areas.</li>
+<br>
+<strong>Souvenir Shops:</strong> <br>
+<li>Most lodges and visitor centers have gift shops offering local crafts, wildlife-themed souvenirs, and books related to the Serengeti and its wildlife.</li>
+<!-- <br><strong>Restaurants and Dining:</strong><br>
+<li>Many lodges and camps within the park offer on-site dining with a variety of options, from local Tanzanian cuisine to international dishes.</li>
+<li>Designated areas for visitors to enjoy packed lunches or enjoy scenic views during their travels.</li> -->
+
+              </p>
+              
+
+        </div>
+    </div>
+    <br>
+    <br>
+    <br>
+
+    <div class="text-box-container">
+        <div class="text-box-header"></div>
+        <div class="text-box-content">
+
+            <p>
+                <strong><b>1.</b> Restaurants and Dining</strong><br>
+    <li>Many lodges and camps within the park offer on-site dining with a variety of options, from local Tanzanian cuisine to international dishes.</li>
+    <b>Picnic Sites:</b>
+    <li>Designated areas for visitors to enjoy packed lunches or enjoy scenic views during their travels.</li>
+    
+              
+
+</div>
+</div>
+
+
+
+  
+
+<div class="image-row">
+    <div class="image-item">
+      <img src="images/dining-on-our-outdoor.jpg" alt="Image 1">
+    </div>
+    <div class="image-item">
+      <img src="images/serengeti.jpg">
+    </div>
+    <div class="image-item">
+      <img src="images/serengeti food.jpg" alt="Image 3">
+    </div>
+  </div>
+   
+  <div class="text-box-container">
+    <div class="text-box-header"></div>
+    <div class="text-box-content">
+
+        <p>
+            <strong> Mammoth Hot Springs Hotel Exterior:</strong><br>
+            Scenic View designed to blend with the natural environment, offering panoramic views of the Serengeti plains. You might dine while watching wildlife roam nearby or enjoy the golden sunset over the savanna. <br>
+
+<br><strong> Traditional Maasai-Inspired Decor:</strong><br>
+<br>
+The interiors often feature local Maasai artwork, woven baskets, and colorful textiles, combining rustic charm with luxury.  <br>
+
+<br><strong> Comfortable and Relaxed Atmosphere:</strong><br>
+<br>
+Dining spaces are designed for comfort, featuring spacious layouts, wooden interiors, and sometimes open kitchens, where guests can watch chefs prepare fresh meals, enhancing the overall experience.
+<br>
+<br><strong> Bar and Lounge Areas:</strong><br>
+<br>
+Many lodges offer a bar or lounge area, often with a fireplace, where guests can relax before or after dinner. These areas usually serve refreshing cocktails and light bites, creating a cozy space to unwind after a day of safari. 
+</p>
+          
+
+</div>
+</div>
+  <br>
+  <br>
+
+  <div class="text-box-container">
+    <div class="text-box-header"></div>
+    <div class="text-box-content">
+
+        <p>
+            <strong><b>2.</b> Souvenir Shops:</strong><br>
+            Most lodges and visitor centers have gift shops offering local crafts, wildlife-themed souvenirs, and books related to the Serengeti and its wildlife.
+</p>
+          
+
+</div>
+</div>
+
+<div class="image-row">
+    <div class="image-item">
+      <img src="images/serengeti store.jpg" alt="Image 1">
+    </div>
+    <div class="image-item">
+      <img src="images/s.store.jpg">
+    </div>
+    <div class="image-item">
+      <img src="images/s.store 2.jpg" alt="Image 3">
+    </div>
+  </div>
+
+  <div class="text-box-container">
+    <div class="text-box-header"></div>
+    <div class="text-box-content">
+
+        <p>
+           <b>Unique Local Crafts:</b><br>
+           Souvenir shops in Serengeti offer a wide range of handcrafted items, including Maasai jewelry, beaded necklaces, wooden carvings, and handwoven textiles, reflecting the local culture and artistry of the region. 
+          
+            
+           <br><b>Books and Photography:</b><br>
+           Many souvenir shops offer books and photography related to the Serengeti and its wildlife, providing a lasting memory of the park’s beauty and history.
+            
+            
+          <br> <b> Locally Made Clothing: </b><br>
+          Some shops sell locally made clothing, such as Maasai shukas (traditional cloth), scarves, and tote bags, providing a piece of the local culture for travelers to take home.
+          
+            
+          <br> <b>Tanzania-Themed Goods:</b><br>
+          In addition to Serengeti-specific items, many shops sell Tanzanian-themed products, including coffee, spices, and artisan crafts, allowing visitors to bring home a taste of the country.
+
+
+
+           
+
+
+</p>
+          
+
+</div>
+</div>
+  <br>
+  <br>
+
+
+
+  <!-- ADDING WORD DOC -->
+<br>
+<br>
+
+<div class="text-box-container">
+  <div class="text-box-header">Download The Park Information Here</div>
+  <div class="text-box-content">
+    <center><p><a href="Serengeti.pdf" target="_blank">Serengeti National Park Information</a>
+    </p></center>
+    
+
+
+  </div>
+</div>
+<br>
+<br>
+<br>
+
+
+
+  <!-- ADDING FOOTER -->
+  <footer class="site-footer">
+    <div class="container">
+        <div class="row">
+            <!-- About Section -->
+            <div class="col-md-4">
+                <h5>About Us</h5>
+                <p>We are dedicated to bringing the wonders of national parks and wildlife to your fingertips. Our mission is to help you explore the beauty of nature and the incredible animals that inhabit these pristine environments.</p>
+            </div>
+
+            <!-- Quick Links Section -->
+            <div class="col-md-4">
+                <h5>Quick Links</h5>
+                <ul>
+                    <li><a href="#">Home</a></li>
+                    <li><a href="#">National Parks</a></li>
+                    <li><a href="#">Wildlife Information</a></li>
+                    <li><a href="#">Our Mission</a></li>
+                    <li><a href="#">Contact Us</a></li>
+                </ul>
+            </div>
+
+            <!-- Contact Section -->
+            <div class="col-md-4">
+                <h5>Contact Us</h5>
+                <p>Email: support@nationalparks.com</p>
+                <p>Phone: +1 (800) 123-4567</p>
+                <p>Address: 123 Wilderness Ave, Nature City, NC 56789</p>
+            </div>
+        </div>
+
+        <div class="row">
+            <!-- Social Media Section -->
+            <div class="col-12">
+                <div class="social-media">
+                    <a href="#" class="social-icon"><i class="fab fa-facebook-f"></i></a>
+                    <a href="#" class="social-icon"><i class="fab fa-twitter"></i></a>
+                    <a href="#" class="social-icon"><i class="fab fa-instagram"></i></a>
+                    <a href="#" class="social-icon"><i class="fab fa-youtube"></i></a>
+                </div>
+            </div>
+        </div>
+    </div>
+</footer>  
+
+
+
+
+
+</center>
+
+
+           
+    
+</body>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
+<script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
+
+</html>
